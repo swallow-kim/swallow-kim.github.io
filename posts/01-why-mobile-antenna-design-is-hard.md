@@ -31,14 +31,9 @@ Around the antenna, there are many nearby structures:
 
 - battery
 - display panel
-- camera module
-- speaker
 - shield cans
 - metal frame
-- screws
-- connectors
 - flex cables
-- sensors
 - other mechanical and electrical components
 
 The antenna is no longer alone. It is strongly coupled to the product.
