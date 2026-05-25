@@ -13,8 +13,9 @@ permalink: /posts/01-why-mobile-antenna-design-is-hard/
 
 ## 1. From Textbook Antennas to Real Products
 
-![Textbook Antenna vs Mobile Antenna System||400](/figures/fig1_1.png)
-
+<p align="center">
+  <img src="/figures/fig1_1.png" style="max-width: 500px; width: 100%;">
+</p>
 When we first learn antenna theory, we usually start from clean and idealized examples:
 
 - a dipole in free space
