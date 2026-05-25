@@ -1,0 +1,13 @@
+title: Min-Gi Kim
+description: RF/Antenna Systems Tech Notes
+theme: minima
+markdown: kramdown
+
+# Keep URL fields empty for easy GitHub Pages defaults.
+url: ""
+baseurl: ""
+
+# Include custom top-level pages in header navigation.
+header_pages:
+  - about.md
+  - references.md
