@@ -1,16 +1,20 @@
+---
+layout: home
+title: Min-Gi Kim
+---
+
 # RF/Antenna Systems Tech Notes
 
-Practical notes on mobile antenna design, RF systems, and wireless device integration.
+Practical notes on **mobile antenna design**, **RF systems**, and **wireless device integration**.
 
-## Series
+This site is a lightweight, Markdown-first notebook for technical reflections, implementation insights, and field-tested engineering heuristics.
+
+## Current Series
 
 ### Mobile Antenna Design Notes
 
-1. Why Mobile Antenna Design Is Hard
-2. Small Antenna Basics
-3. Ground and Chassis Mode
-4. Matching Network and Efficiency
-5. Hand Effect and User Interaction
-6. MIMO Isolation and ECC
-7. Antenna Tuning
-8. RF System View of Antenna Performance
+1. [Why Mobile Antenna Design Is Hard](./posts/01-why-mobile-antenna-design-is-hard)
+2. [Small Antenna Basics](./posts/02-small-antenna-basics)
+3. [Ground and Chassis Mode](./posts/03-ground-and-chassis-mode)
+
+> Future series (planned): closed-loop antenna tuning, implementation of digital algorithms, and more.
