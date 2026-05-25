@@ -6,7 +6,7 @@ permalink: /about/
 
 ## About This Blog
 
-I’m **Min-Gi Kim**, an RF / antenna engineer.
+I’m **Min-Gi Kim**, an RF/antenna systems engineer.
 
 This blog documents practical engineering notes focused on:
 
