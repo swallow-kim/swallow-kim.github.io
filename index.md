@@ -13,7 +13,7 @@ This site is a lightweight, Markdown-first notebook for technical reflections, i
 
 ### Mobile Antenna Design Notes
 
-1. [Why Mobile Antenna Design Is Hard](./posts/01-why-mobile-antenna-design-is-hard)
+1. [Why Mobile Antenna Design Is Hard](./posts/01-why-mobile-antenna-design-is-hard/)
 2. [Small Antenna Basics](./posts/02-small-antenna-basics)
 3. [Ground and Chassis Mode](./posts/03-ground-and-chassis-mode)
 
