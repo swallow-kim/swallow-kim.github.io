@@ -1,4 +1,4 @@
-# Min-Gi Kim — RF/Antenna Systems Tech Notes
+# RF/Antenna Systems Tech Notes
 
 Minimal GitHub Pages (Jekyll + Markdown) setup for a personal technical blog.
 
