@@ -1,11 +1,11 @@
 ---
 layout: home
-title: Min-Gi Kim
+title: RF/Antenna Systems Tech Notes
 ---
 
 # RF/Antenna Systems Tech Notes
 
-Practical notes on **mobile antenna design**, **RF systems**, and **wireless device integration**.
+Practical notes on **mobile antenna design**, **RF systems**, and **wireless device integration** will be posted.
 
 This site is a lightweight, Markdown-first notebook for technical reflections, implementation insights, and field-tested engineering heuristics.
 
