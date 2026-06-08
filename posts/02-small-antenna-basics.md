@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "Mobile Antenna Design Notes #2: Small Antenna Basics"
+title: "Mobile Antenna Design Notes #2: The Ground Is Not Just Ground"
 permalink: /posts/02-the-ground-is-not-just-ground/
 ---
 
