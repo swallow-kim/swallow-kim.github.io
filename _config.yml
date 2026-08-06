@@ -3,11 +3,26 @@ description: RF/Antenna Systems Tech Notes
 theme: minima
 markdown: kramdown
 
-# Keep URL fields empty for easy GitHub Pages defaults.
-url: ""
+url: "https://swallow-kim.github.io"
 baseurl: ""
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
 
 # Include custom top-level pages in header navigation.
 header_pages:
   - about.md
   - references.md
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - package-lock.json
+  - package.json
+  - Rakefile
+  - README.md
+  - scripts
+  - vendor

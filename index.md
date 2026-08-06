@@ -13,10 +13,10 @@ This site is a lightweight, Markdown-first notebook for technical reflections, i
 
 ### Mobile Antenna Design Notes
 
-1. [Why Are Mobile Antennas So Difficult?](posts/01-why-mobile-antenna-design-is-hard.md)
-2. [The Ground Is Not Just Ground](posts/02-the-ground-is-not-just-ground.md)
-3. [How to Excite a Ground Mode](posts/03-ground-and-chassis-mode.md)
-4. [J and M: Controlling the Coupling Mechanism](posts/04-j-and-m-controlling-the-coupling-mechanism.md)
+1. [Why Are Mobile Antennas So Difficult?](/posts/01-why-mobile-antenna-design-is-hard/)
+2. [The Ground Is Not Just Ground](/posts/02-the-ground-is-not-just-ground/)
+3. [How to Excite a Ground Mode](/posts/03-ground-and-chassis-mode/)
+4. [J and M: Controlling the Coupling Mechanism](/posts/04-j-and-m-controlling-the-coupling-mechanism/)
 5. When the Ground Is Too Small
 6. Metal Chassis: Obstacle or Radiator?
 7. MIMO Antennas as a Multi-Mode Design Problem
