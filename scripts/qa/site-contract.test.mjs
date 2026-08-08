@@ -9,7 +9,6 @@ const origin = "https://swallow-kim.github.io";
 const routes = [
   "/",
   "/about/",
-  "/references/",
   "/notes/",
   "/404.html",
   "/posts/01-why-mobile-antenna-design-is-hard/",

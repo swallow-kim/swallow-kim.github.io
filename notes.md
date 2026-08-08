@@ -1,9 +1,10 @@
 ---
 layout: page
-title: Notes
+title: Engineering Notes
 permalink: /notes/
+description: Engineering notes on antennas, RF systems, modem receiver algorithms, measurement, and practical wireless device engineering.
 ---
-<p class="lead">Technical field notes on mobile antenna systems, ground excitation, coupling mechanisms, and integration trade-offs.</p>
+<p class="lead">Technical notes on antennas, RF systems, modem receiver algorithms, measurement, and practical wireless device engineering.</p>
 
 <section class="notes-series">
   {% assign series = site.data.series | first %}

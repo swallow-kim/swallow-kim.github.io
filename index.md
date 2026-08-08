@@ -1,13 +1,14 @@
 ---
 layout: home
-title: RF/Antenna Systems Tech Notes
+title: RF Systems Engineer
+description: RF systems engineer working across antennas, RF systems, modem receiver algorithms, and wireless device integration.
 ---
 
 {% assign profile = site.data.profile %}
 
 <section class="profile-section">
   <p class="primitive-label">Overview</p>
-  <h2>{{ profile.role }}</h2>
+  <h2>RF Systems Engineering Across Antennas and Modems</h2>
   <p class="profile-bio">{{ profile.bio_en }}</p>
 </section>
 
@@ -63,8 +64,16 @@ title: RF/Antenna Systems Tech Notes
 
 <section class="perspective-section">
   <p class="primitive-label">Engineering Perspective</p>
-  <h2>System-Level Integration</h2>
-  <p>In modern mobile devices, an antenna cannot be evaluated in isolation from its environment. The phone chassis, ground plane, surrounding metal components, and RF front-end architecture form a tightly coupled electromagnetic system. These notes focus on practical principles, excitation mechanisms, and validation practices for mobile antenna systems.</p>
+  <h2>From Electromagnetic Behavior to Algorithms and Implementation</h2>
+  <p>
+    Modern wireless products rarely fit neatly within a single engineering
+    discipline. Antenna and chassis behavior, RF and analog impairments,
+    digital receiver processing, modem implementation, and platform
+    constraints interact at the system level. My work focuses on connecting
+    these layers—using physical understanding, models, simulation,
+    measurement, and system-level debugging to turn observed behavior into
+    implementable engineering solutions.
+  </p>
 </section>
 
 <section class="contact-section">

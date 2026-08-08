@@ -1,7 +1,8 @@
 ---
 layout: default
 ---
-{% include engineer-masthead.html title=page.title context="Technical notes on mobile antenna design, RF systems, and wireless-device integration." %}
+{% assign profile = site.data.profile %}
+{% include engineer-masthead.html eyebrow=profile.name title=profile.role context=profile.tagline %}
 <div class="page-shell shell">
   <div class="reading-column">
     {{ content }}

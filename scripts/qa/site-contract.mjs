@@ -6,7 +6,6 @@ const ORIGIN = "https://swallow-kim.github.io";
 const CURRENT_ROUTES = [
   "/",
   "/about/",
-  "/references/",
   "/posts/01-why-mobile-antenna-design-is-hard/",
   "/posts/02-the-ground-is-not-just-ground/",
   "/posts/03-ground-and-chassis-mode/",
@@ -97,7 +96,7 @@ export async function validateSite({ site, stage = "baseline" }) {
     errors.push("missing baseline figure: /figures/fig1_1.png");
   }
 
-  const h1Routes = strict ? requiredRoutes : ["/about/", "/references/"];
+  const h1Routes = strict ? requiredRoutes : ["/about/"];
   for (const route of h1Routes) {
     const file = routeFile(site, route);
     if (!(await exists(file))) continue;

@@ -1,6 +1,6 @@
-# RF/Antenna Systems Tech Notes
+# Min-Gi Kim — Engineering Notes
 
-Custom Jekyll personal technical blog and field notes site for **Min-Gi Kim** (RF / Antenna Systems Engineer).
+Custom Jekyll personal engineering portfolio and technical notes site for **Min-Gi Kim**, an RF Systems Engineer working across antennas, RF systems, modem receiver algorithms, and wireless device integration.
 
 ## Structure
 
@@ -11,10 +11,9 @@ Custom Jekyll personal technical blog and field notes site for **Min-Gi Kim** (R
 - `_data/` - metadata sources (`series.yml`, `profile.yml`)
 - `assets/` - compiled CSS and self-hosted WOFF2 font binaries
 - `figures/` - post figures and WebP responsive variants
-- `index.md` - homepage (profile overview, expertise, series progress, published notes)
-- `about.md` - engineer profile and focus areas
-- `references.md` - curated technical reference resources (`noindex`, `sitemap: false`)
-- `notes.md` - public note series listing (`/notes/`)
+- `index.md` - personal engineering homepage, engineering focus, and featured series
+- `about.md` - engineering background and focus areas
+- `notes.md` - Engineering Notes series listing (`/notes/`)
 - `404.html` - custom 404 page (`noindex`, `sitemap: false`)
 - `_config.yml` - production Jekyll configuration
 - `_config.qa.yml` - QA build configuration (merged for QA showcase)

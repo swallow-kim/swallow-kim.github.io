@@ -1,11 +1,17 @@
 name: Min-Gi Kim
-role: RF / Antenna Systems Engineer
-bio_en: I work on RF and antenna systems, with a focus on mobile antenna design, RF front-end and system trade-offs, and wireless-device integration and validation.
-bio_ko: 모바일 안테나 설계와 RF 시스템 트레이드오프, 무선 기기 통합·검증을 다루는 RF/안테나 엔지니어입니다.
+role: RF Systems Engineer
+tagline: Antennas · Modem Algorithms · Wireless Devices
+
+bio_en: I work across antennas, RF systems, modem receiver algorithms, and wireless device integration. My experience spans mobile antenna design and adaptive impedance tuning, model-based RF optimization, algorithm-to-hardware validation, and Rx digital front-end development for wireless modems.
+
+bio_ko: 안테나, RF 시스템, 모뎀 수신 알고리즘, 무선 기기 통합을 아우르는 RF 시스템 엔지니어입니다. 모바일 안테나 설계와 적응형 임피던스 튜닝, 모델 기반 RF 최적화, 알고리즘-하드웨어 통합 검증, 무선 모뎀의 Rx digital front-end 개발을 경험해 왔습니다.
+
 expertise:
-  - Mobile antenna design
-  - RF front-end and system trade-offs
-  - Wireless-device integration and validation
+  - Mobile antennas & adaptive antenna tuning
+  - RF system analysis & model-based optimization
+  - Modem receiver & Rx digital front-end algorithms
+  - Algorithm-to-hardware integration & validation
+  - Wireless device measurement & system debugging
 github: https://github.com/swallow-kim
 email: mailto:mingi12.kim@gmail.com
 linkedin: https://www.linkedin.com/in/mingi12-kim
