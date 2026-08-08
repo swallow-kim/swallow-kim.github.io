@@ -1,0 +1,8 @@
+<li class="note-row">
+  <span class="note-row__chapter">{{ include.chapter }}</span>
+  <span class="note-row__title">
+    {% if include.url %}<a href="{{ include.url | relative_url }}">{{ include.title }}</a>{% else %}{{ include.title }}{% endif %}
+  </span>
+  <span class="note-row__meta">{{ include.meta | default: "Technical field note" }}</span>
+  {% if include.url %}<a class="note-row__action" href="{{ include.url | relative_url }}">Read note</a>{% else %}<span class="note-row__action">Unavailable</span>{% endif %}
+</li>

@@ -1,0 +1,14 @@
+<div class="series-progress" aria-label="Series progress: {{ include.complete }} of {{ include.total }} chapters published">
+  <div class="series-progress__label"><span>Series progress</span><span>{{ include.complete }} / {{ include.total }}</span></div>
+  <ol class="series-progress__track" aria-hidden="true">
+    {% for index in (1..include.total) %}
+      {% if index < include.current %}
+        <li class="series-progress__mark series-progress__mark--complete">Complete</li>
+      {% elsif index == include.current %}
+        <li class="series-progress__mark series-progress__mark--current">Current</li>
+      {% else %}
+        <li class="series-progress__mark">Upcoming</li>
+      {% endif %}
+    {% endfor %}
+  </ol>
+</div>

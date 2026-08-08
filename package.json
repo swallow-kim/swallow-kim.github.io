@@ -8,6 +8,8 @@
   "scripts": {
     "doctor": "node scripts/qa/doctor.mjs",
     "test:contract": "node --test scripts/qa/site-contract.test.mjs",
+    "test:design": "node --test scripts/qa/design-system-contract.test.mjs",
+    "check:design": "node scripts/qa/design-system-contract.mjs --root . --site _site --qa-site _site_qa",
     "check:site": "node scripts/qa/site-contract.mjs --site _site --stage baseline",
     "qa:browser": "playwright test --config scripts/qa/playwright.config.mjs",
     "qa:lighthouse": "node scripts/qa/lighthouse.mjs"

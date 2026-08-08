@@ -1,0 +1,4 @@
+<aside class="callout" aria-label="{{ include.label | default: 'Engineering note' }}">
+  <p class="callout__label">{{ include.label | default: "Engineering note" }}</p>
+  {{ include.content | markdownify }}
+</aside>

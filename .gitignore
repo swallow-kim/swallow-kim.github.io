@@ -1,5 +1,6 @@
 /.bundle/
 /_site/
+/_site_qa/
 /.jekyll-cache/
 /.jekyll-metadata
 /.sass-cache/

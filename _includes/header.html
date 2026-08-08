@@ -1,0 +1,11 @@
+<header class="site-header">
+  <div class="site-header__inner shell">
+    <a class="site-brand" href="{{ '/' | relative_url }}">RF Field Notes</a>
+    <nav class="site-nav" aria-label="Primary">
+      <ul class="site-nav__list">
+        <li><a href="{{ '/' | relative_url }}"{% if page.url == '/' %} aria-current="page"{% endif %}>Home</a></li>
+        <li><a href="{{ '/about/' | relative_url }}"{% if page.url == '/about/' %} aria-current="page"{% endif %}>About</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>

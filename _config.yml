@@ -1,6 +1,5 @@
 title: Min-Gi Kim
 description: RF/Antenna Systems Tech Notes
-theme: minima
 markdown: kramdown
 
 url: "https://swallow-kim.github.io"
@@ -11,12 +10,8 @@ plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
 
-# Include custom top-level pages in header navigation.
-header_pages:
-  - about.md
-  - references.md
-
 exclude:
+  - _config.qa.yml
   - Gemfile
   - Gemfile.lock
   - node_modules
@@ -25,4 +20,5 @@ exclude:
   - Rakefile
   - README.md
   - scripts
+  - qa
   - vendor

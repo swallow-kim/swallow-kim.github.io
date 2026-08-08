@@ -1,0 +1,60 @@
+.shell {
+  width: min(100%, var(--shell-max));
+  margin-inline: auto;
+  padding-inline: var(--page-gutter);
+}
+
+.skip-link {
+  position: fixed;
+  z-index: 10;
+  inset-block-start: var(--space-2);
+  inset-inline-start: var(--space-2);
+  min-height: var(--control-min);
+  padding: var(--space-2) var(--space-4);
+  border: var(--focus-width) solid var(--color-signal);
+  background: var(--color-surface);
+  color: var(--color-ink);
+  font-family: var(--font-technical);
+  transform: translateY(calc(-100% - var(--space-4)));
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+.site-main {
+  min-width: 0;
+}
+
+.reading-column {
+  width: min(100%, var(--measure-reading));
+}
+
+.page-shell {
+  padding-block: var(--space-12) var(--space-20);
+}
+
+.page-shell__header {
+  width: min(100%, var(--measure-reading));
+  padding-block-end: var(--space-8);
+  border-bottom: var(--rule-thin) solid var(--color-rule);
+}
+
+.page-shell__title {
+  margin-block-start: 0;
+}
+
+.page-shell__body {
+  width: min(100%, var(--measure-reading));
+  min-width: 0;
+}
+
+.page-shell__body > :first-child {
+  margin-block-start: var(--space-8);
+}
+
+@media (max-width: 47.99rem) {
+  .page-shell {
+    padding-block: var(--space-8) var(--space-12);
+  }
+}
