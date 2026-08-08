@@ -3,24 +3,71 @@ layout: home
 title: RF/Antenna Systems Tech Notes
 ---
 
-# Purpose of this blog
+{% assign profile = site.data.profile %}
 
-Practical notes on **mobile antenna design**, **RF systems**, and **wireless device integration** will be posted.
+<section class="profile-section">
+  <p class="primitive-label">Overview</p>
+  <h2>{{ profile.role }}</h2>
+  <p class="profile-bio">{{ profile.bio_en }}</p>
+</section>
 
-This site is a lightweight, Markdown-first notebook for technical reflections, implementation insights, and field-tested engineering heuristics.
+<section class="expertise-section">
+  <p class="primitive-label">Expertise</p>
+  <ul class="expertise-list">
+    {% for item in profile.expertise %}
+      <li class="primitive-tag">{{ item }}</li>
+    {% endfor %}
+  </ul>
+</section>
 
-## Current Series
+<section class="series-section">
+  {% assign series = site.data.series | first %}
+  <header class="series-header">
+    <p class="primitive-label">Featured Series</p>
+    <h2>{{ series.title }}</h2>
+    <p>{{ series.description }}</p>
+  </header>
+  
+  <div class="series-progress">
+    <div class="series-progress__label">
+      <span>Series Progress</span>
+      <span>{{ series.published_chapters }} of {{ series.total_chapters }} Chapters Published</span>
+    </div>
+    <ol class="series-progress__track">
+      {% for i in (1..series.total_chapters) %}
+        {% if i <= series.published_chapters %}
+          <li class="series-progress__mark series-progress__mark--complete" title="Chapter {{ i }} Published">Chapter {{ i }}</li>
+        {% else %}
+          <li class="series-progress__mark" title="Chapter {{ i }} Upcoming">Chapter {{ i }}</li>
+        {% endif %}
+      {% endfor %}
+    </ol>
+  </div>
 
-### Mobile Antenna Design Notes
+  <ul class="note-list">
+    {% assign public_notes = site.notes | where: "published", true | sort: "chapter" %}
+    {% for note in public_notes %}
+      <li class="note-row">
+        <span class="note-row__chapter">Ch. {{ note.chapter }}</span>
+        <span class="note-row__title">
+          <a href="{{ note.url | relative_url }}">{{ note.title }}</a>
+        </span>
+        <span class="note-row__meta">{% if note.date %}{{ note.date | date: "%b %d, %Y" }}{% endif %}</span>
+        <span class="note-row__action">
+          <a class="primitive-button" href="{{ note.url | relative_url }}">Read Note →</a>
+        </span>
+      </li>
+    {% endfor %}
+  </ul>
+</section>
 
-1. [Why Are Mobile Antennas So Difficult?](/posts/01-why-mobile-antenna-design-is-hard/)
-2. [The Ground Is Not Just Ground](/posts/02-the-ground-is-not-just-ground/)
-3. [How to Excite a Ground Mode](/posts/03-ground-and-chassis-mode/)
-4. [J and M: Controlling the Coupling Mechanism](/posts/04-j-and-m-controlling-the-coupling-mechanism/)
-5. When the Ground Is Too Small
-6. Metal Chassis: Obstacle or Radiator?
-7. MIMO Antennas as a Multi-Mode Design Problem
-8. When Antenna Modes Meet Noise Modes
-9. Beyond S11: A Practical Mobile Antenna Design Checklist
+<section class="perspective-section">
+  <p class="primitive-label">Engineering Perspective</p>
+  <h2>System-Level Integration</h2>
+  <p>In modern mobile devices, an antenna cannot be evaluated in isolation from its environment. The phone chassis, ground plane, surrounding metal components, and RF front-end architecture form a tightly coupled electromagnetic system. These notes focus on practical principles, excitation mechanisms, and validation practices for mobile antenna systems.</p>
+</section>
 
-> Future series (planned): closed-loop antenna tuning, implementation of digital algorithms, and more.
+<section class="contact-section">
+  <p class="primitive-label">Contact & Profiles</p>
+  {% include contact-block.html %}
+</section>

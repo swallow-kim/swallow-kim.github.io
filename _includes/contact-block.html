@@ -1,8 +1,7 @@
-<section class="contact-block" id="contact-example" aria-labelledby="contact-title">
-  <h2 id="contact-title">Contact block</h2>
+<div class="contact-block">
   <ul class="contact-block__list">
-    <li class="contact-block__item"><a href="https://github.com/swallow-kim">GitHub profile</a></li>
-    <li class="contact-block__item"><a href="mailto:mingi12.kim@gmail.com">Email Min-Gi Kim</a></li>
-    <li class="contact-block__item"><a href="https://www.linkedin.com/in/mingi12-kim">LinkedIn profile</a></li>
+    <li class="contact-block__item"><a href="{{ site.data.profile.github | default: 'https://github.com/swallow-kim' }}">GitHub</a></li>
+    <li class="contact-block__item"><a href="{{ site.data.profile.email | default: 'mailto:mingi12.kim@gmail.com' }}">Email</a></li>
+    <li class="contact-block__item"><a href="{{ site.data.profile.linkedin | default: 'https://www.linkedin.com/in/mingi12-kim' }}">LinkedIn</a></li>
   </ul>
-</section>
+</div>

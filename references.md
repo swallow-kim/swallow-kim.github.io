@@ -2,6 +2,8 @@
 layout: page
 title: References
 permalink: /references/
+sitemap: false
+robots: noindex
 ---
 
 ## References
@@ -13,4 +15,4 @@ This page will collect useful books, papers, standards, and practical resources 
 - RF measurement and debugging
 - Wireless system design
 
-> Coming soon: curated reading list with short annotations.
+> Note: Curated reading lists and technical reference materials are currently being prepared.

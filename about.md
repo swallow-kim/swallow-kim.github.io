@@ -4,14 +4,24 @@ title: About
 permalink: /about/
 ---
 
-## About This Blog
+{% assign profile = site.data.profile %}
 
-I’m **Min-Gi Kim**, an RF/antenna systems engineer.
+<section class="about-profile">
+  <h2>About Min-Gi Kim</h2>
+  <p class="profile-bio-en">{{ profile.bio_en }}</p>
+  <p class="profile-bio-ko" lang="ko">{{ profile.bio_ko }}</p>
+</section>
 
-This blog documents practical engineering notes focused on:
+<section class="about-expertise">
+  <p class="primitive-label">Engineering Focus</p>
+  <ul class="expertise-list">
+    {% for item in profile.expertise %}
+      <li class="primitive-tag">{{ item }}</li>
+    {% endfor %}
+  </ul>
+</section>
 
-- Mobile antenna design
-- RF front-end and system-level tradeoffs
-- Wireless device integration and validation
-
-The goal is to capture concise, experience-driven guidance that is useful for day-to-day engineering work.
+<section class="about-contact">
+  <p class="primitive-label">Connect</p>
+  {% include contact-block.html %}
+</section>
