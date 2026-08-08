@@ -1,0 +1,21 @@
+---
+layout: default
+---
+<article class="page-shell shell">
+  <header class="page-shell__header">
+    <p class="primitive-label">Chapter {{ page.chapter }}</p>
+    <h1 class="page-shell__title">{{ page.title }}</h1>
+    {% if page.summary %}
+      <p class="article-summary">{{ page.summary }}</p>
+    {% endif %}
+    {% if page.date %}
+      <p class="article-date"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %d, %Y" }}</time></p>
+    {% endif %}
+  </header>
+  <div class="page-shell__body">
+    {{ content }}
+  </div>
+  <footer class="article-footer">
+    <a class="primitive-button" href="{{ '/notes/' | relative_url }}">← Back to Notes</a>
+  </footer>
+</article>

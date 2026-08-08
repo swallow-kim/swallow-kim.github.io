@@ -1,11 +1,16 @@
 ---
-layout: page
+layout: note
 title: "Mobile Antenna Design Notes #5: When the Ground Is Too Small: Move the Mode, Not Just the Match"
 permalink: /posts/05-when-the-ground-is-too-small/
+series: mobile-antenna-design
+chapter: 5
+summary: "How electrically small grounds limit radiation and why moving the mode matters more than matching alone."
+topics:
+  - electrical size
+  - ground mode
+  - matching
+published: false
 ---
-
-# Chapter 5. When the Ground Is Too Small: Move the Mode, Not Just the Match
-
 ## 1. Moving the Impedance Is Not Moving the Mode
 
 The previous chapters assumed that the finite ground or chassis already supports a useful current mode near the desired operating frequency.

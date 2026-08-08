@@ -1,10 +1,19 @@
 ---
-layout: page
+layout: note
 title: "Mobile Antenna Design Notes #2: The Ground Is Not Just Ground"
 permalink: /posts/02-the-ground-is-not-just-ground/
+series: mobile-antenna-design
+chapter: 2
+summary: "How the phone ground and chassis participate in radiation and why a small antenna cannot be analyzed in isolation."
+topics:
+  - ground plane
+  - chassis current
+  - small antennas
+published: true
+date: 2026-06-08 21:28:53 +0900
 ---
-
-# Chapter 2. The Ground Is Not Just Ground
+* TOC
+{:toc}
 
 > **Core idea**  
 > In mobile antenna design, the ground is not merely a zero-volt reference.  
@@ -309,4 +318,3 @@ We will look at the relationship between ground-mode field distribution and ante
 - magnetic-current-like excitation
 - **J-type coupling**
 - **M-type coupling**
-

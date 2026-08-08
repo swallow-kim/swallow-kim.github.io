@@ -1,11 +1,16 @@
 ---
-layout: page
+layout: note
 title: "Mobile Antenna Design Notes #8: When Antenna Modes Meet Noise Modes"
 permalink: /posts/08-when-antenna-modes-meet-noise-modes/
+series: mobile-antenna-design
+chapter: 8
+summary: "How antenna and noise modes couple in a handset and how RF, grounding, and layout choices control the result."
+topics:
+  - antenna modes
+  - noise coupling
+  - EMI
+published: false
 ---
-
-# Chapter 8. When Antenna Modes Meet Noise Modes
-
 ## 1. Desired Signals and Unwanted Noise Share the Same Structure
 
 An antenna is designed to couple electromagnetic energy between the product and free space.

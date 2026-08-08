@@ -10,6 +10,18 @@ plugins:
   - jekyll-seo-tag
   - jekyll-sitemap
 
+collections:
+  notes:
+    output: true
+    sort_by: chapter
+
+defaults:
+  - scope:
+      path: ""
+      type: notes
+    values:
+      layout: note
+
 exclude:
   - _config.qa.yml
   - Gemfile

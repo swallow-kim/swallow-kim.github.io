@@ -1,11 +1,16 @@
 ---
-layout: page
+layout: note
 title: "Mobile Antenna Design Notes #9: Beyond S11: A Practical Mobile Antenna Design Checklist"
 permalink: /posts/09-beyond-s11-practical-mobile-antenna-design-checklist/
+series: mobile-antenna-design
+chapter: 9
+summary: "A practical review checklist that goes beyond S11 to efficiency, correlation, isolation, noise, and validation."
+topics:
+  - S-parameters
+  - efficiency
+  - validation
+published: false
 ---
-
-# Chapter 9. Beyond S11: A Practical Mobile Antenna Design Checklist
-
 Return loss is useful.
 
 It tells us how much power is reflected at the antenna port under a given condition. It helps identify impedance resonance and supports matching-network design.

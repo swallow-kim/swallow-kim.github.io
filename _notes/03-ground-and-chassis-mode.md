@@ -1,10 +1,19 @@
 ---
-layout: page
+layout: note
 title: "Mobile Antenna Design Notes #3: How to Excite a Ground Mode"
 permalink: /posts/03-ground-and-chassis-mode/
+series: mobile-antenna-design
+chapter: 3
+summary: "How feed position and coupling structures excite the chassis modes that dominate handset radiation."
+topics:
+  - ground mode
+  - chassis mode
+  - coupling
+published: true
+date: 2026-08-06 11:46:44 +0900
 ---
-
-# Chapter 3. How to Excite a Ground Mode
+* TOC
+{:toc}
 
 ## 1. The Ground Mode as a Design Target
 

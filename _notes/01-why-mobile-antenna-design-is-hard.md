@@ -1,10 +1,20 @@
 ---
-layout: page
+layout: note
 title: "Mobile Antenna Design Notes #1: Why Are Mobile Antennas So Difficult"
 permalink: /posts/01-why-mobile-antenna-design-is-hard/
+series: mobile-antenna-design
+chapter: 1
+summary: "Why mobile antenna performance is inseparable from the handset ground, chassis, and surrounding system constraints."
+topics:
+  - mobile antennas
+  - RF constraints
+  - device integration
+published: true
+date: 2026-05-25 17:25:04 +0900
 ---
+* TOC
+{:toc}
 
-# Chapter 1. Why Are Mobile Antennas So Difficult?
 > **Core idea**  
 > A textbook antenna is often treated as an isolated radiator.  
 > A mobile antenna is part of a strongly coupled, product-level electromagnetic system.
@@ -13,9 +23,13 @@ permalink: /posts/01-why-mobile-antenna-design-is-hard/
 
 ## 1. From Textbook Antennas to Real Products
 
-<p align="center">
-  <img src="/figures/fig1_1.png" style="max-width: 500px; width: 100%;">
-</p>
+<figure class="figure">
+  <picture>
+    <source srcset="/figures/fig1_1-720w.webp 720w, /figures/fig1_1-1200w.webp 1200w" type="image/webp" />
+    <img src="/figures/fig1_1.png" alt="Comparison of an isolated monopole and ground with a smartphone carrying distributed chassis current." width="1672" height="941" loading="lazy" />
+  </picture>
+  <figcaption class="figure-caption">Comparison of an isolated monopole and ground with a smartphone carrying distributed chassis current.</figcaption>
+</figure>
 When we first learn antenna theory, we usually start from clean and idealized examples:
 
 - a dipole in free space

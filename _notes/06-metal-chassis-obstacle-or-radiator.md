@@ -1,11 +1,16 @@
 ---
-layout: page
+layout: note
 title: "Mobile Antenna Design Notes #6: Metal Chassis: Obstacle or Radiator?"
 permalink: /posts/06-metal-chassis-obstacle-or-radiator/
+series: mobile-antenna-design
+chapter: 6
+summary: "When a metal chassis blocks radiation, when it becomes part of the radiator, and how to design the coupling."
+topics:
+  - metal chassis
+  - radiation modes
+  - coupling
+published: false
 ---
-
-# Chapter 6. Metal Chassis: Obstacle or Radiator?
-
 ## 1. The Chassis as Part of the Radiating System
 
 Conductive external structures are common in mobile products.

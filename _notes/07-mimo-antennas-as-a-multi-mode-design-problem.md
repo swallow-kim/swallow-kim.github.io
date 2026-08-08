@@ -1,11 +1,16 @@
 ---
-layout: page
+layout: note
 title: "Mobile Antenna Design Notes #7: MIMO Antennas as a Multi-Mode Design Problem"
 permalink: /posts/07-mimo-antennas-as-a-multi-mode-design-problem/
+series: mobile-antenna-design
+chapter: 7
+summary: "How MIMO handset antennas become a multi-mode problem involving mode selection, correlation, and isolation."
+topics:
+  - MIMO
+  - characteristic modes
+  - isolation
+published: false
 ---
-
-# Chapter 7. MIMO Antennas as a Multi-Mode Design Problem
-
 ## 1. Multiple Antennas, One Product Structure
 
 Modern mobile products contain multiple antennas.

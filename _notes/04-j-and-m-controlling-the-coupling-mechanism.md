@@ -1,10 +1,19 @@
 ---
-layout: page
+layout: note
 title: "Mobile Antenna Design Notes #4: J and M: Controlling the Coupling Mechanism"
 permalink: /posts/04-j-and-m-controlling-the-coupling-mechanism/
+series: mobile-antenna-design
+chapter: 4
+summary: "How electric-current and magnetic-current coupling provide complementary ways to excite antenna modes."
+topics:
+  - electric current
+  - magnetic current
+  - coupling
+published: true
+date: 2026-08-06 11:46:44 +0900
 ---
-
-# Chapter 4. J and M: Controlling the Coupling Mechanism
+* TOC
+{:toc}
 
 ## 1. J and M Are Not Strict Categories
 
