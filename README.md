@@ -1,41 +1,59 @@
 # RF/Antenna Systems Tech Notes
 
-Minimal GitHub Pages (Jekyll + Markdown) setup for a personal technical blog.
+Custom Jekyll personal technical blog and field notes site for **Min-Gi Kim** (RF / Antenna Systems Engineer).
 
 ## Structure
 
-- `index.md` — homepage
-- `about.md` — short profile and scope
-- `references.md` — curated references page
-- `posts/` — series posts (Markdown-first workflow)
-- `figures/` — image assets for posts
-- `_config.yml` — GitHub Pages/Jekyll configuration
+- `_notes/` - series notes managed via Jekyll collection (`layout: note`, `output: true`)
+- `_layouts/` - custom layouts (`default`, `home`, `page`, `note`)
+- `_includes/` - reusable components (`header`, `footer`, `engineer-masthead`, `note-row`, `toc`, `callout`, `contact-block`)
+- `_sass/rf/` - SCSS design system (`_tokens.scss`, `_base.scss`, `_layout.scss`, `_primitives.scss`, `_fonts.scss`)
+- `_data/` - metadata sources (`series.yml`, `profile.yml`)
+- `assets/` - compiled CSS and self-hosted WOFF2 font binaries
+- `figures/` - post figures and WebP responsive variants
+- `index.md` - homepage (profile overview, expertise, series progress, published notes)
+- `about.md` - engineer profile and focus areas
+- `references.md` - curated technical reference resources (`noindex`, `sitemap: false`)
+- `notes.md` - public note series listing (`/notes/`)
+- `404.html` - custom 404 page (`noindex`, `sitemap: false`)
+- `_config.yml` - production Jekyll configuration
+- `_config.qa.yml` - QA build configuration (merged for QA showcase)
 
-## How to add a new post
+## How to add a new note
 
-1. Create a new Markdown file in `posts/`.
-2. Add front matter at the top:
+1. Create a new Markdown file in `_notes/` following the naming convention (e.g. `_notes/10-my-new-topic.md`).
+2. Add the required front matter:
 
 ```yaml
 ---
-layout: page
-title: "Your Post Title"
-permalink: /posts/your-post-slug/
+layout: note
+title: "Mobile Antenna Design Notes #10: Your Title Here"
+permalink: /posts/10-your-post-slug/
+series: mobile-antenna-design
+chapter: 10
+summary: "A concise 1-2 sentence summary for discovery and cards."
+topics:
+  - topic one
+  - topic two
+published: false
 ---
 ```
 
-3. Write content in Markdown.
-4. If needed, place images in `figures/` and reference them like:
+3. By default, new notes are drafted with `published: false` (omitting the `date` field) and will be excluded from production builds, feed, and sitemap.
+4. Write content in Markdown. Body text must not contain an H1 heading (the title is rendered by the layout).
 
-```md
-![Antenna concept](/figures/example.png)
-```
+## Local Validation & Preview Commands
 
-5. Add the post link to `index.md` under the relevant series.
-6. Commit and push to `main` (or your default branch). GitHub Pages will build automatically.
+- Verify environment: `npm run doctor`
+- Site contract tests: `npm run test:contract`
+- Design system tests: `npm run test:design`
+- Full validation (CI pipeline): `bundle exec rake validate`
+- Local preview server: `bundle exec jekyll serve`
 
-## GitHub Pages notes
+## Publishing & Review Workflow
 
-- Uses the default GitHub Pages-supported Jekyll pipeline.
-- Uses the built-in `minima` theme (no npm, no custom build tools).
-- Best for lightweight technical notes and long-term maintainability.
+Before promoting a note to `published: true`:
+1. Ensure technical accuracy and completeness of prose.
+2. Add the `date` timestamp to front matter (e.g. `date: 2026-08-08 12:00:00 +0900`).
+3. Update `published_chapters` in `_data/series.yml`.
+4. Run `bundle exec rake validate` to confirm production build, HTMLProofer, site contract, and design system tests pass cleanly.
