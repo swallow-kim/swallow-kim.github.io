@@ -26,9 +26,9 @@ date: 2026-05-25 17:25:04 +0900
 <figure class="figure">
   <picture>
     <source srcset="/figures/fig1_1-720w.webp 720w, /figures/fig1_1-1200w.webp 1200w" type="image/webp" />
-    <img src="/figures/fig1_1.png" alt="Comparison of an isolated monopole and ground with a smartphone carrying distributed chassis current." width="1672" height="941" loading="lazy" />
+    <img src="/figures/fig1_1.png" alt="Side-by-side comparison of idealized textbook antenna models and a mobile device in which the antenna interacts with the finite PCB ground, chassis, and nearby conducting structures." width="1672" height="941" loading="lazy" />
   </picture>
-  <figcaption class="figure-caption">Comparison of an isolated monopole and ground with a smartphone carrying distributed chassis current.</figcaption>
+  <figcaption class="figure-caption">Fig. 1-1. From an isolated antenna model to a product-level electromagnetic system. Textbook antenna problems often isolate the radiator and simplify its surroundings, whereas a mobile antenna operates together with the finite PCB ground, chassis, display, battery, and nearby conductive structures.</figcaption>
 </figure>
 When we first learn antenna theory, we usually start from clean and idealized examples:
 
@@ -71,6 +71,18 @@ In contrast, the antenna clearance available in a real product may be only:
 
 - a few millimeters
 - a few centimeters at best
+
+This is not only a geometrical inconvenience.
+
+As an antenna becomes electrically smaller, more electromagnetic energy tends to be stored around the antenna relative to the energy that is radiated. The resulting higher-Q behavior makes wide impedance bandwidth increasingly difficult to achieve.
+
+In practice, miniaturization therefore creates a fundamental tradeoff among antenna size, bandwidth, radiation efficiency, and loss sensitivity.
+
+<!-- TODO: Future Fig. 1-2 (Pending author image asset)
+Asset: /figures/fig1_2.png
+Alt: Log-scale plot showing radiation Q increasing rapidly as antenna electrical size ka decreases, illustrating the electrically small antenna regime.
+Caption: Fig. 1-2. Illustrative small-antenna Q trend as electrical size decreases. A Chu-type reference illustrates the rapid increase in radiation Q as (ka) becomes small. The curve is a theoretical scaling reference, not measured handset data.
+-->
 
 Because of this constraint, mobile antennas often use compact structures such as:
 
@@ -121,7 +133,9 @@ In many low-band and sub-6 GHz mobile antenna cases, the antenna element does no
 
 In this sense, the antenna element is not only a radiator.
 
-It is also an **excitation structure** that couples energy into the ground or chassis mode of the device.
+It can also act as an **excitation structure** that drives useful current distributions on the finite PCB ground or chassis.
+
+In the following chapters, we will interpret these natural current distributions in terms of ground or chassis modes.
 
 This is one of the most important mental models in mobile antenna design.
 
@@ -152,6 +166,14 @@ The same antenna pattern may show different:
 - radiation pattern
 
 even when the antenna geometry itself has not changed much.
+
+What has changed is the electromagnetic boundary condition seen by the antenna: the available current paths, modal fields, and coupling to the surrounding conducting structure are different.
+
+<!-- TODO: Future Fig. 1-3 (Pending author image asset)
+Asset: /figures/fig1_3.png
+Alt: Two identical finite mobile-device PCBs with the same compact antenna placed near a short end in one panel and near the middle of a long edge in the other, illustrating placement-dependent coupling.
+Caption: Fig. 1-3. The same antenna element can excite different product-level current distributions depending on its placement and electromagnetic environment. Changes in antenna position or surrounding conductors alter the available current paths and coupling to the finite ground/chassis.
+-->
 
 Even when return loss looks acceptable, radiation efficiency may still be poor if the antenna is not effectively exciting a useful ground mode.
 
@@ -194,13 +216,21 @@ But the element must be understood in relation to the larger conducting body of 
 
 ## 7. Frequency Dependence
 
-At higher frequencies, the antenna element itself may contribute more directly to radiation.
+The relative roles of the antenna element and the product structure change with electrical size and frequency.
 
-For example, in mmWave arrays, element design and array geometry become central topics.
+At lower frequencies, where the antenna clearance is electrically very small, the finite PCB ground and chassis often make a substantial contribution to the overall radiation.
 
-But for many compact sub-6 GHz mobile antennas, especially at lower bands, the PCB ground and chassis current cannot be ignored.
+As frequency increases, the antenna element, local metal structures, and higher-order chassis modes can all become electrically significant. The problem therefore does not suddenly change at a particular frequency.
 
-This is the key difference between many textbook antennas and practical mobile antennas.
+At mmWave frequencies, the design emphasis shifts further toward individual radiating elements, arrays, beamforming, and blockage.
+
+The useful question is therefore not simply:
+
+> Is this a low-frequency or high-frequency antenna?
+
+but rather:
+
+> Which parts of the product are electrically significant at this frequency, and which current modes are actually participating in radiation?
 
 ---
 
@@ -213,7 +243,7 @@ In a mobile product, the ground is a finite conductor with its own current distr
 | Textbook antenna problem | Mobile antenna problem |
 |---|---|
 | Ground is often idealized | Ground is finite and product-dependent |
-| Antenna element is the main radiator | Ground/chassis current can dominate radiation |
+| Radiator and reference structure are usually idealized and clearly separated | Element, ground, chassis, and nearby conductors form a coupled radiating system |
 | Nearby structures are usually ignored | Nearby structures strongly affect current paths |
 | Matching often explains much of the behavior | Matching and radiation efficiency can diverge |
 | Geometry is relatively clean | Geometry is constrained by product integration |
@@ -249,6 +279,8 @@ Because the available ground modes are different.
 
 Because impedance matching and radiation efficiency are not the same thing.
 
+A good input match only tells us that little power is reflected at the port; it does not tell us how much of the accepted power is actually radiated.
+
 ### Why can a metal frame sometimes ruin an antenna and sometimes improve it?
 
 Because it changes the chassis mode and the current path.
@@ -275,12 +307,13 @@ These two questions will guide the rest of this series.
 
 ## Key Takeaways
 
-- A mobile antenna is not an isolated radiator.
-- The antenna element is strongly coupled to the PCB ground, chassis, and surrounding product structures.
-- At low-band and sub-6 GHz frequencies, the ground or chassis current can be a major contributor to radiation.
-- Good return loss does not always mean good radiation efficiency.
-- Mobile antenna design is fundamentally a product-level electromagnetic design problem.
-- A useful design mindset is to identify and excite useful ground or chassis modes.
+- Mobile antennas operate under severe electrical-size constraints.
+- Miniaturization carries a fundamental tradeoff among antenna size, radiation Q, and impedance bandwidth.
+- The PCB ground, chassis, and surrounding structures form an integrated electromagnetic system.
+- A compact antenna element acts as both a radiator and an excitation structure for product-level current distributions.
+- Antenna placement changes the electromagnetic boundary conditions and source-to-structure coupling.
+- Good return loss does not guarantee good radiation efficiency.
+- Mobile antenna design is fundamentally a product-level electromagnetic system design problem.
 
 ---
 

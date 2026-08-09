@@ -4,7 +4,7 @@ title: "Mobile Antenna Design Notes #4: J and M: Controlling the Coupling Mechan
 permalink: /posts/04-j-and-m-controlling-the-coupling-mechanism/
 series: mobile-antenna-design
 chapter: 4
-summary: "How electric-current and magnetic-current coupling provide complementary ways to excite antenna modes."
+summary: "How antenna geometry and reactive loading control electric- and magnetic-response coupling to ground and chassis modes."
 topics:
   - electric current
   - magnetic current
@@ -21,7 +21,7 @@ In the previous chapter, we introduced J-type and M-type excitation as a practic
 
 A J-type source is associated mainly with electric-current-like excitation. Structures such as monopoles, IFAs, and PIFAs often have strong conduction current along an open-ended metal path and strong electric field near the open end.
 
-An M-type source is associated mainly with magnetic-current-like excitation. Loop, slot, and aperture structures can create circulating current, magnetic flux, or equivalent magnetic current that couples effectively to magnetic-field-dominant regions of a ground mode.
+An M-type source is associated mainly with magnetic-response-dominant excitation. A conducting loop carries ordinary electric current but can create a magnetic-dipole-like response through circulating current, while slots and apertures can also be described using equivalent magnetic-current concepts. These structures can couple effectively to magnetic-field-dominant regions of a ground mode when their orientation and field distribution are appropriate.
 
 However, this distinction can easily become misleading if it is treated as a strict antenna classification.
 
@@ -77,6 +77,10 @@ Again, the goal is not simply to maximize capacitance.
 
 Excessive capacitance may confine the field locally, reduce radiation resistance, increase sensitivity to mechanical tolerance, or create a very narrow resonance. The useful value of capacitance depends on how it changes the current path and how the resulting field overlaps with the target ground mode.
 
+Reactive loading should therefore be viewed not only as a way to shift resonance or improve impedance matching, but also as a way to reshape the antenna current distribution.
+
+That change in current distribution can directly change how the antenna couples to the ground mode.
+
 ---
 
 ## 4. Designing an M-Dominant Structure
@@ -119,7 +123,26 @@ Matching is important, but matching should follow the physical excitation mechan
 
 ---
 
-## 6. Key Message
+## 6. A Practical Example: Same Geometry, Different Current Distribution
+
+A useful example comes from a compact antenna loaded with a series inductor near the feed and a capacitor near the opposite end.
+
+By changing the reactive loading while keeping the operating frequency near 800 MHz, the same basic antenna geometry can support very different current distributions.
+
+With a weak capacitive connection at the end, little current reaches the end of the structure and the current distribution becomes more monopole-like. As the capacitive connection becomes stronger, more current flows through the end region and the distribution becomes more loop-like.
+
+The important point is that the basic topology has not changed dramatically. The current distribution has — and therefore the coupling to the ground mode has changed as well.
+
+In this particular configuration, the antenna was located in a strong electric-field region of the dominant ground mode. The more monopole-like current distribution therefore coupled more effectively and provided a substantially wider measured impedance bandwidth.
+
+This does not mean that monopole-like current is universally better. If the available antenna location overlaps a strong magnetic-field region, a loop-like current distribution may instead provide the better coupling.
+
+> The topology is only the starting point.  
+> Loading changes the current distribution, and the current distribution determines how the antenna interacts with the ground mode.
+
+---
+
+## 7. Key Message
 
 > Practical mobile antennas are mixtures of J-type and M-type excitation. The antenna engineer’s job is to control that mixture so that the available antenna volume couples efficiently to the desired ground or chassis mode.
 

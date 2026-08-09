@@ -41,7 +41,7 @@ A mode is not equally excitable from every location. Some positions are very eff
 
 Let us return to the simple rectangular PCB ground example.
 
-Imagine a **150 mm × 80 mm** rectangular ground plane. As discussed in the previous chapter, this ground may support a long-axis half-wave-like current mode around the low-GHz region. In this simplified mode, the surface current is strong near the center of the board and weaker near the two short ends. The voltage-related behavior, or the electric field, is stronger near the two ends.
+Imagine a **150 mm × 80 mm** rectangular ground plane. As discussed in the previous chapter, this ground may support a long-axis half-wave-like current mode around the low-GHz region. In this simplified mode, the surface current is strong near the center of the board and weaker near the two short ends. Surface-charge accumulation and the associated fringing electric field are stronger near the two ends.
 
 This gives us a very useful design picture.
 
@@ -59,7 +59,9 @@ This is the basic idea behind source-mode coupling.
 
 ## 3. Source-Mode Coupling
 
-In antenna theory, this idea can be described more formally using the reaction theorem or modal coupling integrals. The coupling strength depends on how well the source distribution overlaps with the field distribution of the mode. An electric current source couples to the modal electric field. An equivalent magnetic current source couples to the modal magnetic field.
+In antenna theory, this idea can be described more formally using the reaction theorem or modal coupling integrals. The coupling strength depends on the spatial and vector overlap between the source distribution and the field distribution of the mode. An electric-current excitation couples through the modal electric field, while an equivalent magnetic-current excitation couples through the modal magnetic field.
+
+This means that field magnitude alone is not enough. Source position, orientation, and spatial extent also matter.
 
 But we do not need to start from the equation to use the idea.
 
@@ -81,7 +83,9 @@ For convenience, we can call these two coupling mechanisms **J-type** and **M-ty
 
 **J-type excitation** refers to electric-current-like excitation. It is associated with structures such as monopoles, dipoles, IFA, and PIFA-like elements. These structures have conduction current flowing along a metal path, and they often create strong electric field near an open end.
 
-**M-type excitation** refers to magnetic-current-like excitation. This does not mean that a real magnetic current physically flows in the metal. It is an equivalent-source concept. In practice, loop, slot, and aperture-like structures can behave as magnetic-current-like sources because they create loop current, magnetic flux, or aperture fields that couple well to magnetic-field-dominant regions of the target mode.
+**M-type excitation** refers to magnetic-response-dominant excitation. This does not mean that a real magnetic current physically flows in the metal.
+
+A conducting loop carries ordinary electric current, but its circulating current can produce a magnetic-dipole-like response. Slots and apertures, on the other hand, can also be described using equivalent magnetic-current concepts. Both mechanisms can be useful for coupling to magnetic-field-dominant regions of a target mode.
 
 This distinction is not meant to classify every antenna into two perfect categories. Real antennas usually have both electric and magnetic coupling components. Still, the J/M view is very useful because it helps us choose a reasonable antenna structure for a given location.
 
@@ -202,7 +206,7 @@ This is the practical meaning of ground-mode excitation.
 
 ## 10. Key Message
 
-> A useful ground mode must be excited with the right source at the right location. Electric-field regions favor electric-current-like excitation, while current or magnetic-field regions favor magnetic-current-like excitation.
+> A useful ground mode must be excited with the right source at the right location. Electric-field-dominant regions favor electric-response-dominant excitation, while current or magnetic-field-dominant regions favor magnetic-response-dominant excitation.
 
 ---
 

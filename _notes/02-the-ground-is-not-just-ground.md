@@ -73,7 +73,7 @@ In this mode:
 
 - current is relatively strong near the center of the board
 - current is weaker near the two ends
-- voltage or electric-field-related behavior is stronger near the ends
+- surface-charge accumulation and the associated fringing electric field are stronger near the ends
 
 This is similar to the intuition we have from a half-wave resonator.
 
@@ -143,6 +143,12 @@ If we analyze a finite ground plane using characteristic modes, we can identify 
 
 Some modes may be useful for radiation at the target frequency. Others may not be useful. Some modes may be easy to excite from a given antenna location. Others may be difficult to excite from that location.
 
+One important distinction is that a mode being resonant does not mean that it will automatically be strongly excited.
+
+Characteristic-mode analysis can tell us which natural modes are available near the target frequency. But the actual contribution of each mode also depends on how strongly the antenna source couples to it.
+
+A useful mode can therefore exist at the right frequency but remain weakly excited if the antenna is placed or oriented poorly.
+
 ---
 
 ## 5. A more physical design process
@@ -202,7 +208,7 @@ This is not an exact calculation. The actual frequency depends on:
 
 But it gives an initial direction.
 
-It tells us that the long dimension of the ground may be useful for low-band or sub-1 GHz radiation. It also tells us that the current maximum and voltage maximum are located in different regions.
+It tells us that the long dimension of the ground may be useful for low-band or sub-1 GHz radiation. It also tells us that the current maximum and the charge/electric-field maximum are located in different regions.
 
 This becomes important when deciding where and how to place the antenna element.
 
