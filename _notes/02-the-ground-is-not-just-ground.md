@@ -12,8 +12,12 @@ topics:
 published: true
 date: 2026-06-08 21:28:53 +0900
 ---
+<nav class="article-toc" aria-labelledby="article-toc-title" markdown="1">
+<p class="article-toc__title" id="article-toc-title">On this page</p>
+
 * TOC
 {:toc}
+</nav>
 
 > **Core idea**  
 > In mobile antenna design, the ground is not merely a zero-volt reference.  
@@ -43,16 +47,28 @@ Current does not spread over it uniformly. Voltage is not perfectly constant eve
 
 This is why the word **ground** can be misleading in mobile antenna design.
 
+<div class="table-scroll" tabindex="0" role="region" aria-label="Circuit and antenna viewpoints of ground" markdown="1">
+
 | Viewpoint | What “ground” means |
 |---|---|
 | Circuit view | A reference node |
 | RF / antenna view | A finite conducting structure that can carry RF current and radiate |
+
+</div>
 
 From a circuit point of view, ground is a reference.
 
 From an antenna point of view, ground can be a radiator.
 
 This does not mean that every part of the ground radiates equally. It means that the finite ground can support specific current distributions, and those current distributions can contribute significantly to radiation.
+
+<figure class="technical-figure">
+  <picture tabindex="0">
+    <source srcset="/figures/fig2_1.svg" type="image/svg+xml" />
+    <img src="/figures/fig2_1.png" alt="Two-panel schematic comparing an approximately equipotential circuit reference conductor with a finite RF conductor carrying nonuniform longitudinal surface current and showing restrained end-region charge and fringing-electric-field cues." width="1800" height="1080" loading="lazy" />
+  </picture>
+  <figcaption class="figure-caption">Fig. 2-1. Circuit-level and RF views of a finite ground plane. At low frequencies, ground can often be treated as an approximately equipotential reference. At RF, a finite conductor supports nonuniform surface current, charge, and electromagnetic fields and can become part of the radiating structure.</figcaption>
+</figure>
 
 ---
 
@@ -88,6 +104,14 @@ The exact modes depend on board size, shape, surrounding materials, and boundary
 > **A finite ground has its own natural current modes.**
 
 This is one of the most important ideas in mobile antenna design.
+
+<figure class="technical-figure">
+  <picture tabindex="0">
+    <source srcset="/figures/fig2_2.svg" type="image/svg+xml" />
+    <img src="/figures/fig2_2.png" alt="Top view of a conceptual 150 by 80 millimeter rectangular ground with longitudinal current strongest near the center and charge and fringing-electric-field cues near the ends, followed by normalized current and charge or electric-field proxy curves." width="1800" height="1080" loading="lazy" />
+  </picture>
+  <figcaption class="figure-caption">Fig. 2-2. Simplified one-dimensional representation of the fundamental long-axis mode of a finite rectangular ground. The surface-current envelope is strongest near the center, while surface-charge accumulation—and the associated fringing electric field—is stronger toward the two ends. The distributions are conceptual first-order approximations rather than characteristic-mode simulation results.</figcaption>
+</figure>
 
 ---
 
@@ -148,6 +172,13 @@ One important distinction is that a mode being resonant does not mean that it wi
 Characteristic-mode analysis can tell us which natural modes are available near the target frequency. But the actual contribution of each mode also depends on how strongly the antenna source couples to it.
 
 A useful mode can therefore exist at the right frequency but remain weakly excited if the antenna is placed or oriented poorly.
+
+<!-- TODO: Fig. 2-3 requires author-supplied characteristic-mode evidence.
+Asset: /figures/fig2_3.png
+Required source: original CMA solver exports or the author's clean thesis-source composite containing characteristic-current distributions for several modes and the modal-significance response of the 30 mm × 150 mm rectangular ground. Do not substitute analytical curves or synthetic heatmaps.
+Alt: Composite of actual characteristic-current distributions and modal-significance responses for a 30 millimeter by 150 millimeter rectangular ground.
+Caption: Fig. 2-3. Example characteristic-mode analysis of a 30 mm × 150 mm rectangular ground. The characteristic currents illustrate several natural current distributions supported by the conducting body, while the modal-significance response shows that different modes become resonant over different frequency regions. This example uses a different ground geometry from the simplified 150 mm × 80 mm model above.
+-->
 
 ---
 

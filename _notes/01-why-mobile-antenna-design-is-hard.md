@@ -12,8 +12,12 @@ topics:
 published: true
 date: 2026-05-25 17:25:04 +0900
 ---
+<nav class="article-toc" aria-labelledby="article-toc-title" markdown="1">
+<p class="article-toc__title" id="article-toc-title">On this page</p>
+
 * TOC
 {:toc}
+</nav>
 
 > **Core idea**  
 > A textbook antenna is often treated as an isolated radiator.  
@@ -23,8 +27,8 @@ date: 2026-05-25 17:25:04 +0900
 
 ## 1. From Textbook Antennas to Real Products
 
-<figure class="figure">
-  <picture>
+<figure class="technical-figure">
+  <picture tabindex="0">
     <source srcset="/figures/fig1_1-720w.webp 720w, /figures/fig1_1-1200w.webp 1200w" type="image/webp" />
     <img src="/figures/fig1_1.png" alt="Side-by-side comparison of idealized textbook antenna models and a mobile device in which the antenna interacts with the finite PCB ground, chassis, and nearby conducting structures." width="1672" height="941" loading="lazy" />
   </picture>
@@ -63,9 +67,13 @@ At cellular and sub-6 GHz frequencies, the wavelength is much larger than the an
 
 For example:
 
+<div class="table-scroll" tabindex="0" role="region" aria-label="Wavelength and handset-size comparison" markdown="1">
+
 | Frequency | Free-space wavelength | Half wavelength | Practical implication |
 |---:|---:|---:|---|
 | ~900 MHz | ~33 cm | ~16 cm | Already comparable to smartphone length |
+
+</div>
 
 In contrast, the antenna clearance available in a real product may be only:
 
@@ -78,11 +86,13 @@ As an antenna becomes electrically smaller, more electromagnetic energy tends to
 
 In practice, miniaturization therefore creates a fundamental tradeoff among antenna size, bandwidth, radiation efficiency, and loss sensitivity.
 
-<!-- TODO: Future Fig. 1-2 (Pending author image asset)
-Asset: /figures/fig1_2.png
-Alt: Log-scale plot showing radiation Q increasing rapidly as antenna electrical size ka decreases, illustrating the electrically small antenna regime.
-Caption: Fig. 1-2. Illustrative small-antenna Q trend as electrical size decreases. A Chu-type reference illustrates the rapid increase in radiation Q as (ka) becomes small. The curve is a theoretical scaling reference, not measured handset data.
--->
+<figure class="technical-figure">
+  <picture tabindex="0">
+    <source srcset="/figures/fig1_2.svg" type="image/svg+xml" />
+    <img src="/figures/fig1_2.png" alt="Logarithmic plot of the theoretical reference Q equals one over ka cubed plus one over ka, rising rapidly as electrical size ka decreases, with the conceptual electrically small region marked." width="1800" height="1080" loading="lazy" />
+  </picture>
+  <figcaption class="figure-caption">Fig. 1-2. Illustrative small-antenna Q trend as electrical size decreases. A Chu-type spherical-mode reference illustrates the rapid increase in minimum radiation Q as ka becomes small. The curve is a theoretical scaling reference, not measured handset data.</figcaption>
+</figure>
 
 Because of this constraint, mobile antennas often use compact structures such as:
 
@@ -171,8 +181,9 @@ What has changed is the electromagnetic boundary condition seen by the antenna: 
 
 <!-- TODO: Future Fig. 1-3 (Pending author image asset)
 Asset: /figures/fig1_3.png
-Alt: Two identical finite mobile-device PCBs with the same compact antenna placed near a short end in one panel and near the middle of a long edge in the other, illustrating placement-dependent coupling.
-Caption: Fig. 1-3. The same antenna element can excite different product-level current distributions depending on its placement and electromagnetic environment. Changes in antenna position or surrounding conductors alter the available current paths and coupling to the finite ground/chassis.
+Required source: the approved externally generated two-panel image showing the same finite device platform, antenna geometry, and unchanged simplified long-axis chassis mode in both panels; only the antenna location may differ.
+Alt: Two identical finite mobile-device PCBs with the same compact antenna placed near a short end in one panel and near the middle of a long edge in the other. Both panels show the same simplified long-axis chassis-mode distribution, illustrating how source location changes its spatial overlap with the mode.
+Caption: Fig. 1-3. The same antenna element can couple differently to the same product-level ground or chassis mode when its location changes. The underlying modal distribution is unchanged; the key difference is the spatial relationship between the source location and the modal electric- and magnetic-field regions.
 -->
 
 Even when return loss looks acceptable, radiation efficiency may still be poor if the antenna is not effectively exciting a useful ground mode.
@@ -185,14 +196,14 @@ Mobile antenna design often feels unintuitive because the engineer is not design
 
 The real design target is the coupled system formed by:
 
-```text
-antenna element
+<div class="code-scroll" tabindex="0" role="region" aria-label="Components of a product-level electromagnetic system">
+<pre><code>antenna element
 + PCB ground
 + chassis
 + nearby components
 + user interaction
-= product-level electromagnetic system
-```
+= product-level electromagnetic system</code></pre>
+</div>
 
 A useful way to summarize the problem is:
 
@@ -240,6 +251,8 @@ In a textbook problem, the ground is often treated as an ideal reference.
 
 In a mobile product, the ground is a finite conductor with its own current distribution.
 
+<div class="table-scroll" tabindex="0" role="region" aria-label="Textbook and mobile antenna ground comparison" markdown="1">
+
 | Textbook antenna problem | Mobile antenna problem |
 |---|---|
 | Ground is often idealized | Ground is finite and product-dependent |
@@ -247,6 +260,8 @@ In a mobile product, the ground is a finite conductor with its own current distr
 | Nearby structures are usually ignored | Nearby structures strongly affect current paths |
 | Matching often explains much of the behavior | Matching and radiation efficiency can diverge |
 | Geometry is relatively clean | Geometry is constrained by product integration |
+
+</div>
 
 In other words:
 

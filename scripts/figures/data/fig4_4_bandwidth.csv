@@ -1,0 +1,6 @@
+case,simulated_bandwidth_mhz,measured_bandwidth_mhz
+1,9.1,10
+2,9.2,15
+3,10.0,25
+4,11.9,30
+5,16.6,41

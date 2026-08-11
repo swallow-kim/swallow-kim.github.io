@@ -12,8 +12,12 @@ topics:
 published: true
 date: 2026-08-06 11:46:44 +0900
 ---
+<nav class="article-toc" aria-labelledby="article-toc-title" markdown="1">
+<p class="article-toc__title" id="article-toc-title">On this page</p>
+
 * TOC
 {:toc}
+</nav>
 
 ## 1. The Ground Mode as a Design Target
 
@@ -51,9 +55,17 @@ Near the center of the board, the ground mode has strong current and magnetic-fi
 
 These two regions should not be excited in the same way.
 
-If the available antenna location is near an electric-field maximum, an electric-current-like source can be effective. If the available antenna location is near a current or magnetic-field maximum, a magnetic-current-like source may be more effective.
+If the available antenna location is near an electric-field maximum, an electric-response-dominant source can be effective. If the available antenna location is near a current or magnetic-field maximum, a magnetic-response-dominant source may be more effective.
 
 This is the basic idea behind source-mode coupling.
+
+<figure class="technical-figure">
+  <picture tabindex="0">
+    <source srcset="/figures/fig3_1.svg" type="image/svg+xml" />
+    <img src="/figures/fig3_1.png" alt="Top view of a conceptual 150 by 80 millimeter ground with longitudinal blue current arrows strongest near the center and restrained red charge and fringing-electric-field cues near the ends. A transverse cross-section inset shows magnetic field circulating around the longitudinal center current." width="1800" height="1080" loading="lazy" />
+  </picture>
+  <figcaption class="figure-caption">Fig. 3-1. Simplified field picture of the fundamental long-axis ground mode. The surface-current envelope is largest near the center, whereas charge accumulation and fringing electric field are stronger near the ends. The inset illustrates the magnetic field associated with the longitudinal surface current.</figcaption>
+</figure>
 
 ---
 
@@ -81,7 +93,7 @@ If the target ground mode has strong current or magnetic field at a certain loca
 
 For convenience, we can call these two coupling mechanisms **J-type** and **M-type excitation**.
 
-**J-type excitation** refers to electric-current-like excitation. It is associated with structures such as monopoles, dipoles, IFA, and PIFA-like elements. These structures have conduction current flowing along a metal path, and they often create strong electric field near an open end.
+**J-type excitation** refers to electric-response-dominant excitation. It is associated with structures such as monopoles, dipoles, IFA, and PIFA-like elements. These structures have conduction current flowing along a metal path, and they often create strong electric field near an open end.
 
 **M-type excitation** refers to magnetic-response-dominant excitation. This does not mean that a real magnetic current physically flows in the metal.
 
@@ -97,7 +109,7 @@ Consider the long-axis half-wave ground mode again.
 
 At the short ends of the rectangular ground, the electric field is strong. If we have antenna clearance near one of these ends, a PIFA or IFA-like structure can be a natural choice. The open end of the antenna element can create strong electric field, and this can couple well to the electric-field region of the ground mode.
 
-In this case, the antenna element acts like an electric-current-dominant excitation structure. It does not need to radiate everything by itself. Instead, it excites the long-axis ground mode, and the finite ground participates in radiation.
+In this case, the antenna element acts like an electric-response-dominant excitation structure. It does not need to radiate everything by itself. Instead, it excites the long-axis ground mode, and the finite ground participates in radiation.
 
 This is one of the reasons why many mobile antennas are placed near the edge or corner of the PCB when possible. These locations often provide good access to voltage or electric-field regions of useful chassis modes.
 
@@ -135,6 +147,14 @@ It is not enough to say, “Use a PIFA,” or “Use a loop.” The better quest
 
 If the available location overlaps with a modal electric-field maximum, electric coupling is a good direction. If it overlaps with a modal current or magnetic-field maximum, magnetic coupling is a good direction. If the location is somewhere between the two, then a hybrid structure may be needed.
 
+<figure class="technical-figure">
+  <picture tabindex="0">
+    <source srcset="/figures/fig3_2.svg" type="image/svg+xml" />
+    <img src="/figures/fig3_2.png" alt="Two panels with the same simplified long-axis ground mode. The first places an open-ended IFA or PIFA-like electric-response-dominant source at a short end; the second places an ordinary-current loop or slot-like magnetic-response-dominant source along the middle of a long edge." width="1800" height="1080" loading="lazy" />
+  </picture>
+  <figcaption class="figure-caption">Fig. 3-2. Conceptual source placement for coupling to different regions of the same ground mode. An electric-response-dominant source can couple efficiently near a modal electric-field maximum, while a loop- or slot-like structure can provide a magnetic response aligned with the local modal magnetic field near the current maximum.</figcaption>
+</figure>
+
 ---
 
 ## 7. A 900 MHz Design Example
@@ -145,7 +165,7 @@ Assume again that the target band is around **900 MHz** and the board size is **
 
 If the antenna clearance is available at a short-end corner, the design path may be straightforward. We can start with an IFA or PIFA-like element. The element creates electric-field coupling near the board end. Then we tune the geometry and matching network to align the resonance and improve impedance matching. In this case, the antenna location and the source type are well matched to the target mode.
 
-But if the antenna clearance is only available near the center of the long edge, the design path should be different. A purely open-ended electric-current-like structure may not be the best choice. Instead, we may consider a loop-type element, a slot-type element, or a structure that creates stronger magnetic coupling. The goal is to use the local current maximum of the ground mode rather than trying to force electric coupling where the modal electric field is weak.
+But if the antenna clearance is only available near the center of the long edge, the design path should be different. A purely open-ended electric-response-dominant structure may not be the best choice. Instead, we may consider a loop-type element, a slot-type element, or a structure that creates stronger magnetic coupling. The goal is to use the local current maximum of the ground mode rather than trying to force electric coupling where the modal electric field is weak.
 
 This is the design logic behind ground-mode excitation.
 
@@ -153,6 +173,14 @@ This is the design logic behind ground-mode excitation.
 2. Inspect the field distribution of that mode.
 3. Identify what type of field is available at the antenna location.
 4. Design the antenna element as an excitation structure for that field.
+
+<figure class="technical-figure">
+  <picture tabindex="0">
+    <source srcset="/figures/fig3_3.svg" type="image/svg+xml" />
+    <img src="/figures/fig3_3.png" alt="Normalized scalar proxy curves along board coordinate x over L, with an electric local-field proxy strongest at the two short ends and a current or magnetic-field proxy strongest at the center." width="1800" height="1080" loading="lazy" />
+  </picture>
+  <figcaption class="figure-caption">Fig. 3-3. One-dimensional scalar illustration of local field availability for exciting the simplified long-axis ground mode. The electric-field proxy is strongest toward the board ends, whereas the current/magnetic-field proxy is strongest near the center. The curves illustrate local source–mode overlap intuition only; they are not calculated coupling coefficients.</figcaption>
+</figure>
 
 ---
 

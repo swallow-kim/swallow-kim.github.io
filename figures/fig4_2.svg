@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="648pt" height="388.8pt" viewBox="0 0 648 388.8" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-08-10T01:22:35.455096</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.5, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 388.8
+L 648 388.8
+L 648 0
+L 0 0
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 38.00016 250.399872
+Q 38.00016 204.899976 38.00016 161.188934
+" clip-path="url(#pc693e822db)" style="fill: none; stroke: #3e6f91; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 36.00016 165.188934
+L 38.00016 161.188934
+L 40.00016 165.188934
+z
+" clip-path="url(#pc693e822db)" style="fill: #3e6f91; stroke: #3e6f91; stroke-width: 1.6; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_1">
+    <path d="M 31.000176 273.14982
+L 184.999824 273.14982
+" clip-path="url(#pc693e822db)" style="fill: none; stroke: #22272b; stroke-width: 1.4; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_2">
+    <path d="M 38.00016 273.14982
+L 38.00016 131.400144
+L 170.999856 131.400144
+L 170.999856 166.400064
+L 66.000096 166.400064
+L 66.000096 201.399984
+L 149.999904 201.399984
+" clip-path="url(#pc693e822db)" style="fill: none; stroke: #22272b; stroke-width: 2.1; stroke-linecap: square"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 9.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #22272b" x="7.20023" y="84.018784" transform="rotate(-0 7.20023 84.018784)">(1) Current-path geometry</text>
+   </g>
+   <g id="text_2">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans'; fill: #606970" transform="translate(56.24207 287.011842)">longer, narrower path</text>
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans'; fill: #606970" transform="translate(43.497969 297.649764)">greater inductive tendency</text>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="patch_3">
+    <path d="M 254.00016 239.899896
+L 313.500024 239.899896
+L 313.500024 134.900136
+L 254.00016 134.900136
+z
+" clip-path="url(#p5b323c8905)" style="fill: #e1e4e6; stroke: #22272b; stroke-width: 1.4; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 334.499976 239.899896
+L 393.99984 239.899896
+L 393.99984 134.900136
+L 334.499976 134.900136
+z
+" clip-path="url(#p5b323c8905)" style="fill: #e1e4e6; stroke: #22272b; stroke-width: 1.4; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 314.200022 218.899944
+Q 324 218.899944 332.514239 218.899944
+" clip-path="url(#p5b323c8905)" style="fill: none; stroke: #b65b52; stroke-width: 1.15; stroke-linecap: round"/>
+    <path d="M 329.714239 217.499944
+L 332.514239 218.899944
+L 329.714239 220.299944
+z
+" clip-path="url(#p5b323c8905)" style="fill: #b65b52; stroke: #b65b52; stroke-width: 1.15; stroke-linecap: round"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 314.200022 187.400016
+Q 324 187.400016 332.514239 187.400016
+" clip-path="url(#p5b323c8905)" style="fill: none; stroke: #b65b52; stroke-width: 1.15; stroke-linecap: round"/>
+    <path d="M 329.714239 186.000016
+L 332.514239 187.400016
+L 329.714239 188.800016
+z
+" clip-path="url(#p5b323c8905)" style="fill: #b65b52; stroke: #b65b52; stroke-width: 1.15; stroke-linecap: round"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 314.200022 155.900088
+Q 324 155.900088 332.514239 155.900088
+" clip-path="url(#p5b323c8905)" style="fill: none; stroke: #b65b52; stroke-width: 1.15; stroke-linecap: round"/>
+    <path d="M 329.714239 154.500088
+L 332.514239 155.900088
+L 329.714239 157.300088
+z
+" clip-path="url(#p5b323c8905)" style="fill: #b65b52; stroke: #b65b52; stroke-width: 1.15; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_3">
+    <path d="M 247.000176 273.14982
+L 400.999824 273.14982
+" clip-path="url(#p5b323c8905)" style="fill: none; stroke: #22272b; stroke-width: 1.4; stroke-linecap: square"/>
+   </g>
+   <g id="text_3">
+    <text style="font-weight: 700; font-size: 9.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #22272b" x="223.20023" y="84.018784" transform="rotate(-0 223.20023 84.018784)">(2) Capacitive plate / gap</text>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans'; fill: #606970" transform="translate(249.261719 287.011842)">larger facing area / smaller gap</text>
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans'; fill: #606970" transform="translate(259.043008 297.649764)">greater capacitive coupling</text>
+   </g>
+  </g>
+  <g id="axes_3">
+   <g id="patch_8">
+    <path d="M 464.400173 211.89996
+L 475.600147 211.89996
+L 475.600147 183.900024
+L 464.400173 183.900024
+z
+" clip-path="url(#pb9d8bceb74)" style="fill: #ffffff; stroke: #22272b; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 482.250132 141.90012
+Q 514.625058 141.90012 545.21113 141.90012
+" clip-path="url(#pb9d8bceb74)" style="fill: none; stroke: #3e6f91; stroke-width: 1.6; stroke-linecap: round"/>
+    <path d="M 541.21113 139.90012
+L 545.21113 141.90012
+L 541.21113 143.90012
+z
+" clip-path="url(#pb9d8bceb74)" style="fill: #3e6f91; stroke: #3e6f91; stroke-width: 1.6; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_4">
+    <path d="M 463.000176 273.14982
+L 616.999824 273.14982
+" clip-path="url(#pb9d8bceb74)" style="fill: none; stroke: #22272b; stroke-width: 1.4; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_5">
+    <path d="M 470.00016 246.89988
+L 470.00016 141.90012
+L 602.999856 141.90012
+L 602.999856 246.89988
+L 470.00016 246.89988
+" clip-path="url(#pb9d8bceb74)" style="fill: none; stroke: #22272b; stroke-width: 2.1; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_6">
+    <path d="M 565.199942 254.599862
+L 565.199942 239.199898
+" clip-path="url(#pb9d8bceb74)" style="fill: none; stroke: #22272b; stroke-width: 1.5; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_7">
+    <path d="M 575.699918 254.599862
+L 575.699918 239.199898
+" clip-path="url(#pb9d8bceb74)" style="fill: none; stroke: #22272b; stroke-width: 1.5; stroke-linecap: square"/>
+   </g>
+   <g id="text_5">
+    <text style="font-weight: 700; font-size: 9.5px; font-family: 'DejaVu Sans'; text-anchor: start; fill: #22272b" x="439.20023" y="84.018784" transform="rotate(-0 439.20023 84.018784)">(3) Reactive loading</text>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #22272b" x="454.250196" y="200.521398" transform="rotate(-0 454.250196 200.521398)">L</text>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans'; text-anchor: middle; fill: #22272b" x="570.44993" y="266.149836" transform="rotate(-0 570.44993 266.149836)">C</text>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans'; fill: #606970" transform="translate(456.093477 287.011842)">loading reshapes current and fields</text>
+    <text style="font-size: 9.5px; font-family: 'DejaVu Sans'; fill: #606970" transform="translate(456.512812 297.649764)">several quantities change together</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pc693e822db">
+   <rect x="3.00024" y="71.90028" width="209.99952" height="244.99944"/>
+  </clipPath>
+  <clipPath id="p5b323c8905">
+   <rect x="219.00024" y="71.90028" width="209.99952" height="244.99944"/>
+  </clipPath>
+  <clipPath id="pb9d8bceb74">
+   <rect x="435.00024" y="71.90028" width="209.99952" height="244.99944"/>
+  </clipPath>
+ </defs>
+</svg>

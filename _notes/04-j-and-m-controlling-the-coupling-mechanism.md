@@ -12,8 +12,12 @@ topics:
 published: true
 date: 2026-08-06 11:46:44 +0900
 ---
+<nav class="article-toc" aria-labelledby="article-toc-title" markdown="1">
+<p class="article-toc__title" id="article-toc-title">On this page</p>
+
 * TOC
 {:toc}
+</nav>
 
 ## 1. J and M Are Not Strict Categories
 
@@ -46,6 +50,14 @@ This shift is important because antenna names do not uniquely determine the actu
 Two antennas may both be called PIFAs but behave differently because their feed-to-short spacing, open-end area, branch geometry, or coupling to the ground is different. Two loop antennas may also behave differently because their loop area, gap position, loading capacitor, and surrounding ground structure create different combinations of electric and magnetic coupling.
 
 The antenna type is only a starting topology. The final coupling mechanism is determined by the current and field distribution.
+
+<figure class="technical-figure">
+  <picture tabindex="0">
+    <source srcset="/figures/fig4_1.svg" type="image/svg+xml" />
+    <img src="/figures/fig4_1.png" alt="Three conceptual antenna structures: an open-ended electric-response-dominant path with physical current and electric-field cues, an ordinary-current loop with a magnetic response, and a hybrid structure combining open-ended and circulating responses." width="1800" height="1080" loading="lazy" />
+  </picture>
+  <figcaption class="figure-caption">Fig. 4-1. Conceptual antenna structures illustrating different coupling characters: (a) electric-response-dominant, or J-like, excitation; (b) magnetic-response-dominant, or M-like, excitation; and (c) hybrid excitation containing substantial contributions from both mechanisms. The labels describe dominant coupling behavior rather than strict antenna categories or literal source types.</figcaption>
+</figure>
 
 ---
 
@@ -80,6 +92,14 @@ Excessive capacitance may confine the field locally, reduce radiation resistance
 Reactive loading should therefore be viewed not only as a way to shift resonance or improve impedance matching, but also as a way to reshape the antenna current distribution.
 
 That change in current distribution can directly change how the antenna couples to the ground mode.
+
+<figure class="technical-figure">
+  <picture tabindex="0">
+    <source srcset="/figures/fig4_2.svg" type="image/svg+xml" />
+    <img src="/figures/fig4_2.png" alt="Three conceptual panels showing a longer and narrower current path, facing capacitive plates separated by a gap, and a loop path with inductive and capacitive loading as qualitative controls of antenna current and field distribution." width="1800" height="1080" loading="lazy" />
+  </picture>
+  <figcaption class="figure-caption">Fig. 4-2. Examples of geometrical and reactive-loading controls used to reshape antenna current and field distributions. Changes in current-path length, capacitive coupling, and lumped loading provide qualitative design knobs, but each geometrical change generally affects several electromagnetic quantities simultaneously.</figcaption>
+</figure>
 
 ---
 
@@ -134,6 +154,23 @@ With a weak capacitive connection at the end, little current reaches the end of 
 The important point is that the basic topology has not changed dramatically. The current distribution has — and therefore the coupling to the ground mode has changed as well.
 
 In this particular configuration, the antenna was located in a strong electric-field region of the dominant ground mode. The more monopole-like current distribution therefore coupled more effectively and provided a substantially wider measured impedance bandwidth.
+
+<!-- TODO: Fig. 4-3 requires author-supplied simulated current-distribution evidence.
+Asset: /figures/fig4_3.png
+Required source: original HFSS field exports, raw simulation project, or a clean thesis-source image at approximately 800 MHz comparing Case #1 (L = 0.1 nH, C = 1.07 pF; more loop-like) with Case #5 (L = 48.4 nH, C = 0.1 pF; more monopole-like). Preserve the current-scale provenance and do not invent amplitudes or synthesize a heatmap.
+Alt: Actual simulated current distributions at approximately 800 megahertz for the same loaded-antenna topology, comparing the more loop-like Case 1 with the more monopole-like Case 5.
+Caption: Fig. 4-3. Simulated current distributions of the same basic loaded-antenna topology at 800 MHz. A large end capacitance and small series inductance produce a more loop-like current distribution, whereas a small end capacitance and larger series inductance produce a more monopole-like distribution.
+-->
+
+The bandwidth comparison below replots author-supplied numerical simulation and measurement values transcribed from the thesis. The exact values used by the generator are retained with a provenance note in `scripts/figures/data/fig4_4_bandwidth.csv`.
+
+<figure class="technical-figure">
+  <picture tabindex="0">
+    <source srcset="/figures/fig4_4.svg" type="image/svg+xml" />
+    <img src="/figures/fig4_4.png" alt="Line plot of five reactively loaded antenna cases tuned near 800 megahertz. Simulated bandwidth rises from 9.1 to 16.6 megahertz and measured bandwidth rises from 10 to 41 megahertz from the more loop-like toward the more monopole-like case, with the result labeled as configuration-specific." width="1800" height="1080" loading="lazy" />
+  </picture>
+  <figcaption class="figure-caption">Fig. 4-4. Simulated and measured impedance bandwidth for five reactively loaded antenna cases tuned near 800 MHz. Moving from the loop-like case toward the monopole-like case increased the bandwidth in this specific antenna placement, where the dominant ground mode exhibits strong electric-field behavior. The trend should not be interpreted as a universal preference for monopole-like excitation. Replotted from author-supplied numerical values transcribed from the thesis; the thesis PDF and exact page or table locator are not present in this repository.</figcaption>
+</figure>
 
 This does not mean that monopole-like current is universally better. If the available antenna location overlaps a strong magnetic-field region, a loop-like current distribution may instead provide the better coupling.
 
