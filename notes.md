@@ -3,45 +3,29 @@ layout: page
 title: Engineering Notes
 permalink: /notes/
 description: Engineering notes on antennas, RF systems, modem receiver algorithms, measurement, and practical wireless device engineering.
+wide: true
 ---
-<p class="lead">Technical notes on antennas, RF systems, modem receiver algorithms, measurement, and practical wireless device engineering.</p>
+<p class="lead prose">The complete public archive of technical notes on antennas, RF systems, modem receiver algorithms, measurement, and practical wireless device engineering.</p>
 
-<section class="notes-series">
-  {% assign series = site.data.series | first %}
-  <header class="series-header">
-    <h2>{{ series.title }}</h2>
-    <p>{{ series.description }}</p>
-  </header>
-  
-  <div class="series-progress">
-    <div class="series-progress__label">
-      <span>Series Progress</span>
-      <span>{{ series.published_chapters }} of {{ series.total_chapters }} Chapters Published</span>
-    </div>
-    <ol class="series-progress__track">
-      {% for i in (1..series.total_chapters) %}
-        {% if i <= series.published_chapters %}
-          <li class="series-progress__mark series-progress__mark--complete" title="Chapter {{ i }} Published">Chapter {{ i }}</li>
-        {% else %}
-          <li class="series-progress__mark" title="Chapter {{ i }} Upcoming">Chapter {{ i }}</li>
-        {% endif %}
-      {% endfor %}
-    </ol>
-  </div>
+{% assign public_notes = site.notes | where: "published", true %}
+{% for series in site.data.series %}
+{% assign series_notes = public_notes | where: "series", series.id | sort: "chapter" %}
+{% if series_notes.size > 0 %}
+<section class="notes-series" aria-labelledby="series-{{ series.id }}">
+<header class="series-header">
+<div>
+{% if series.domain %}<p class="eyebrow">{{ series.domain }}</p>{% endif %}
+<h2 id="series-{{ series.id }}">{{ series.title }}</h2>
+</div>
+<p>{{ series.description }}</p>
+</header>
+{% include series-progress.html title=series.title complete=series.published_chapters total=series.total_chapters %}
 
-  <ul class="note-list">
-    {% assign public_notes = site.notes | where: "published", true | sort: "chapter" %}
-    {% for note in public_notes %}
-      <li class="note-row">
-        <span class="note-row__chapter">Ch. {{ note.chapter }}</span>
-        <span class="note-row__title">
-          <a href="{{ note.url | relative_url }}">{{ note.title }}</a>
-        </span>
-        <span class="note-row__meta">{% if note.date %}{{ note.date | date: "%b %d, %Y" }}{% endif %}</span>
-        <span class="note-row__action">
-          <a class="primitive-button" href="{{ note.url | relative_url }}">Read Note →</a>
-        </span>
-      </li>
-    {% endfor %}
-  </ul>
+<ul class="note-list">
+{% for note in series_notes %}
+{% include note-row.html chapter=note.chapter title=note.title summary=note.summary date=note.date url=note.url %}
+{% endfor %}
+</ul>
 </section>
+{% endif %}
+{% endfor %}

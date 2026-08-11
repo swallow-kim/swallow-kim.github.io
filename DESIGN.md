@@ -99,6 +99,10 @@ All intentional spacing derives from 4px.
 
 - `--shell-max`: 92rem. The shell centers in the viewport.
 - `--page-gutter`: `clamp(1rem, 4vw, 3rem)`.
+- `--measure-reading`: 68ch. Long prose and article bodies use this measure.
+- `--measure-compact`: 42ch. Section introductions and short supporting copy use this measure.
+- `--measure-toc`: 18rem. Desktop article navigation uses this maximum width.
+- Home, Notes, and About use the wide shell for structured content. Only their prose descendants receive a reading measure.
 - Mobile: below 48rem. One column, horizontal rules between items, compact masthead, full-width controls.
 - Tablet: 48rem through 63.99rem. Two-column opportunities are allowed, but reading content remains one column.
 - Desktop: 64rem and above. Concept-A ledger rows and supporting two-column regions activate.
@@ -148,22 +152,43 @@ Only the following shared primitives are approved for this wave.
 
 ### Article shell
 
-- Structure: article header, optional progress, main reading column, optional TOC, and article footer.
-- Layout: centered 68ch reading measure; wide figures may escape only within shell bounds.
+- Structure: article header, series/date metadata, generated table of contents, main reading column, and article footer.
+- Layout: centered 68ch reading measure; at desktop the generated TOC may occupy an adjacent 18rem column; wide figures may escape only within shell bounds.
 - Accessibility: exactly one visible H1; heading order is logical; no fixed-height body.
 
 ### Table of contents
 
-- Structure: labelled `<nav>` with a short ordered list of in-page anchors.
+- Structure: labelled `<nav>` wrapping Kramdown's generated `#markdown-toc` anchors. Production anchors are never hard-coded.
 - States: default, hover, focus-visible, active/current.
-- Layout: bordered reading inset; no sticky positioning in this wave.
+- Layout: bordered reading inset; adjacent to the reading column at desktop and inline before the article body below 64rem; no sticky positioning.
 - Accessibility: keyboard reachable with no obstruction after fragment navigation.
+
+### Engineering-work ledger
+
+- Structure: ordered, data-driven articles with problem domain, contribution, methodology, and optional verified public evidence.
+- States: static content plus standard link states when verified evidence exists.
+- Layout: three ruled columns at desktop, two at tablet, and one at mobile; square geometry and borders-only separation.
+- Accessibility: headings remain sequential; labels and text, not position or color, identify every field.
+
+### Publication list
+
+- Structure: data-driven ordered list containing verified title, authors, venue, year, and optional verified URL or description.
+- States: standard link states; the complete section is not rendered when its data list is empty.
+- Layout: ruled rows within the wide shell, with bibliographic text constrained to a readable measure.
+- Accessibility: publication titles are meaningful link text; metadata remains visible as text.
+
+### Chapter navigation
+
+- Structure: labelled previous/next `<nav>` derived from published notes in the current series.
+- States: previous, next, hover, focus-visible, and active; unavailable directions are omitted rather than disabled.
+- Layout: two ruled columns at tablet and desktop, one column at mobile.
+- Accessibility: direction and destination title are both exposed; private or unpublished chapters never render.
 
 ### Figure and caption
 
 - Structure: `<figure>` with responsive media/picture and `<figcaption>`.
 - States: static; linked figures use the standard link states.
-- Layout: square corners, explicit media dimensions/aspect ratio, caption below a hairline.
+- Layout: square corners, explicit media dimensions/aspect ratio, caption below a hairline; dense technical media may scroll horizontally below the tablet breakpoint so internal labels remain legible.
 - Accessibility: informative images require accurate alt; decorative graphs use empty alt and an adjacent textual explanation.
 
 ### Callout

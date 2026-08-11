@@ -1,21 +1,28 @@
 ---
 layout: default
 ---
+{% assign series_entry = site.data.series | where: "id", page.series | first %}
 <article class="page-shell shell">
   <header class="page-shell__header">
-    <p class="primitive-label">Chapter {{ page.chapter }}</p>
+    <p class="eyebrow">{{ series_entry.title | default: "Engineering Notes" }} · Chapter {{ page.chapter }}</p>
     <h1 class="page-shell__title">{{ page.title }}</h1>
     {% if page.summary %}
       <p class="article-summary">{{ page.summary }}</p>
     {% endif %}
-    {% if page.date %}
-      <p class="article-date"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %d, %Y" }}</time></p>
-    {% endif %}
+    <dl class="article-meta">
+      <div><dt>Series</dt><dd><a href="{{ '/notes/' | relative_url }}">{{ series_entry.title | default: "Engineering Notes" }}</a></dd></div>
+      <div><dt>Chapter</dt><dd>{{ page.chapter }} of {{ series_entry.total_chapters }}</dd></div>
+      {% if page.date %}<div><dt>Published</dt><dd><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %d, %Y" }}</time></dd></div>{% endif %}
+      {% if page.last_modified_at %}<div><dt>Updated</dt><dd><time datetime="{{ page.last_modified_at | date_to_xmlschema }}">{{ page.last_modified_at | date: "%B %d, %Y" }}</time></dd></div>{% endif %}
+    </dl>
   </header>
-  <div class="page-shell__body">
-    {{ content }}
+  <div class="article-shell">
+    <div class="article-shell__body">
+      {{ content }}
+    </div>
   </div>
   <footer class="article-footer">
-    <a class="primitive-button" href="{{ '/notes/' | relative_url }}">← Back to Engineering Notes</a>
+    {% include chapter-navigation.html %}
+    <a class="button" href="{{ '/notes/' | relative_url }}">Back to Engineering Notes</a>
   </footer>
 </article>

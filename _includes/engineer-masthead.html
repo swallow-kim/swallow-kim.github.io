@@ -4,5 +4,6 @@
     <h1 class="engineer-masthead__title" id="masthead-title">{{ include.title | default: page.title }}</h1>
     <div class="engineer-masthead__signal" aria-hidden="true"></div>
     {% if include.context %}<p class="engineer-masthead__context">{{ include.context }}</p>{% endif %}
+    {% if include.statement %}<p class="engineer-masthead__statement">{{ include.statement }}</p>{% endif %}
   </div>
 </section>

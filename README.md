@@ -6,9 +6,9 @@ Custom Jekyll personal engineering portfolio and technical notes site for **Min-
 
 - `_notes/` - series notes managed via Jekyll collection (`layout: note`, `output: true`)
 - `_layouts/` - custom layouts (`default`, `home`, `page`, `note`)
-- `_includes/` - reusable components (`header`, `footer`, `engineer-masthead`, `note-row`, `toc`, `callout`, `contact-block`)
+- `_includes/` - reusable components (`header`, `footer`, `engineer-masthead`, `note-row`, `series-progress`, `chapter-navigation`, `publications`, `callout`, `contact-block`)
 - `_sass/rf/` - SCSS design system (`_tokens.scss`, `_base.scss`, `_layout.scss`, `_primitives.scss`, `_fonts.scss`)
-- `_data/` - metadata sources (`series.yml`, `profile.yml`)
+- `_data/` - metadata sources (`series.yml`, `profile.yml`, `selected_work.yml`, `publications.yml`)
 - `assets/` - compiled CSS and self-hosted WOFF2 font binaries
 - `figures/` - post figures and WebP responsive variants
 - `index.md` - personal engineering homepage, engineering focus, and featured series
@@ -40,6 +40,26 @@ published: false
 
 3. By default, new notes are drafted with `published: false` (omitting the `date` field) and will be excluded from production builds, feed, and sitemap.
 4. Write content in Markdown. Body text must not contain an H1 heading (the title is rendered by the layout).
+5. For a generated table of contents, wrap Kramdown's TOC marker in the labelled `.article-toc` navigation pattern used by the published notes. Do not hard-code heading anchors.
+6. Wrap Markdown tables in a focusable `.table-scroll` region with a table-specific `aria-label`, following the published notes, so narrow viewports scroll locally.
+7. Wrap preformatted samples that can exceed the reading measure in a focusable `.code-scroll` region with a descriptive `aria-label`; the region, not the page, owns horizontal scrolling.
+
+Optional note metadata:
+
+```yaml
+last_modified_at: 2026-08-11 12:00:00 +0900
+image:
+  path: /figures/verified-social-preview.png
+  alt: Accurate description of the verified preview image
+```
+
+`jekyll-seo-tag` uses `description` and `image` for page and social metadata. Add an image only when the actual asset and accurate alt text exist.
+
+## Portfolio data
+
+- Edit `_data/selected_work.yml` to maintain the public-safe engineering work summaries. Evidence links are optional and must point to real public artifacts.
+- Add future note groups to `_data/series.yml`; `notes.md` discovers every series by `id`, so the archive is not tied to one hard-coded series.
+- Add a publication to `_data/publications.yml` only after verifying its title, author order, venue, year, pages, DOI, and link. Supported keys are `title`, `authors` (list), `authorship`, `venue`, `year`, optional `volume`, optional `issue`, `pages`, `doi`, `url`, and optional `description`. The homepage section stays absent while the list is empty.
 
 ## Local Validation & Preview Commands
 

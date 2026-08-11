@@ -1,0 +1,20 @@
+- id: mobile-antennas
+  title: Mobile Antennas & Adaptive Tuning
+  domain: Compact and multiband antennas across mobile, wearable, wireless-module, and IoT form factors, followed by adaptive tuning under changing device conditions.
+  contribution: Connected electromagnetic and current-mode interpretation with impedance characterization, matching networks, RF calibration, and tuner control.
+  approach: Model-based optimization, conducted and OTA correlation, and antenna-RFFE-modem-platform validation.
+  evidence:
+    label: Read the Mobile Antenna Design notes
+    url: /notes/
+
+- id: rf-algorithms
+  title: RF Hardware-Algorithm Integration
+  domain: Translating transmitter algorithms into stable behavior across practical PA, RFIC, feedback-receiver, and board-level signal paths.
+  contribution: Implemented and validated wideband memory-DPD flows under real RF hardware constraints.
+  approach: Custom reference boards and test benches, waveform generation and RF capture, ACLR/EVM measurement, de-embedding, automation, and hardware-algorithm correlation.
+
+- id: uwb-receiver
+  title: UWB Receiver & Link-Level Simulation
+  domain: Rx digital front-end filtering and signal conditioning under blockers, interference, and RF/analog front-end impairments.
+  contribution: Receiver-algorithm analysis, link-level simulation ownership, and system-level root-cause work.
+  approach: C++ simulation with configurable CIR and radar-channel modeling, plus Python/MATLAB analysis workflows and engineering interfaces.

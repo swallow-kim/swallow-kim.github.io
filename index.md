@@ -5,78 +5,71 @@ description: RF systems engineer working across antennas, RF systems, modem rece
 ---
 
 {% assign profile = site.data.profile %}
+{% assign selected_work = site.data.selected_work %}
+{% assign public_notes = site.notes | where: "published", true | sort: "date" | reverse %}
 
-<section class="profile-section">
-  <p class="primitive-label">Overview</p>
-  <h2>RF Systems Engineering Across Antennas and Modems</h2>
-  <p class="profile-bio">{{ profile.bio_en }}</p>
-</section>
-
-<section class="expertise-section">
-  <p class="primitive-label">Expertise</p>
-  <ul class="expertise-list">
-    {% for item in profile.expertise %}
-      <li class="primitive-tag">{{ item }}</li>
-    {% endfor %}
-  </ul>
-</section>
-
-<section class="series-section">
-  {% assign series = site.data.series | first %}
-  <header class="series-header">
-    <p class="primitive-label">Featured Series</p>
-    <h2>{{ series.title }}</h2>
-    <p>{{ series.description }}</p>
-  </header>
-  
-  <div class="series-progress">
-    <div class="series-progress__label">
-      <span>Series Progress</span>
-      <span>{{ series.published_chapters }} of {{ series.total_chapters }} Chapters Published</span>
+<section class="home-section selected-work" aria-labelledby="selected-work-title">
+  <header class="section-heading">
+    <div>
+      <p class="eyebrow">Selected engineering work</p>
+      <h2 id="selected-work-title">Problems across the wireless signal chain</h2>
     </div>
-    <ol class="series-progress__track">
-      {% for i in (1..series.total_chapters) %}
-        {% if i <= series.published_chapters %}
-          <li class="series-progress__mark series-progress__mark--complete" title="Chapter {{ i }} Published">Chapter {{ i }}</li>
-        {% else %}
-          <li class="series-progress__mark" title="Chapter {{ i }} Upcoming">Chapter {{ i }}</li>
-        {% endif %}
-      {% endfor %}
-    </ol>
-  </div>
+    <p>Public-safe summaries of engineering domains, contributions, and working methods.</p>
+  </header>
 
-  <ul class="note-list">
-    {% assign public_notes = site.notes | where: "published", true | sort: "chapter" %}
-    {% for note in public_notes %}
-      <li class="note-row">
-        <span class="note-row__chapter">Ch. {{ note.chapter }}</span>
-        <span class="note-row__title">
-          <a href="{{ note.url | relative_url }}">{{ note.title }}</a>
-        </span>
-        <span class="note-row__meta">{% if note.date %}{{ note.date | date: "%b %d, %Y" }}{% endif %}</span>
-        <span class="note-row__action">
-          <a class="primitive-button" href="{{ note.url | relative_url }}">Read Note →</a>
-        </span>
+  <ol class="work-ledger">
+    {% for work in selected_work %}
+      <li class="work-card">
+        <article>
+          <p class="work-card__index">Area 0{{ forloop.index }}</p>
+          <h3>{{ work.title }}</h3>
+          <dl class="work-card__details">
+            <div><dt>Problem domain</dt><dd>{{ work.domain }}</dd></div>
+            <div><dt>Contribution</dt><dd>{{ work.contribution }}</dd></div>
+            <div><dt>Method</dt><dd>{{ work.approach }}</dd></div>
+          </dl>
+          {% if work.evidence.url %}
+            <p class="work-card__evidence"><a href="{{ work.evidence.url | relative_url }}">{{ work.evidence.label }}</a></p>
+          {% else %}
+            <p class="work-card__evidence work-card__evidence--unlinked">Public artifact not listed</p>
+          {% endif %}
+        </article>
       </li>
     {% endfor %}
+  </ol>
+</section>
+
+<section class="home-section featured-notes" aria-labelledby="featured-notes-title">
+  {% assign series = site.data.series | first %}
+  <header class="section-heading">
+    <div>
+      <p class="eyebrow">Featured engineering notes</p>
+      <h2 id="featured-notes-title">Recent public field notes</h2>
+    </div>
+    <p>{{ series.description }}</p>
+  </header>
+  {% include series-progress.html title=series.title complete=series.published_chapters total=series.total_chapters %}
+
+  <ul class="note-list">
+    {% for note in public_notes limit: 4 %}
+      {% include note-row.html chapter=note.chapter title=note.title summary=note.summary date=note.date url=note.url %}
+    {% endfor %}
   </ul>
+  <p class="section-action"><a class="button" href="{{ '/notes/' | relative_url }}">View all Engineering Notes</a></p>
 </section>
 
-<section class="perspective-section">
-  <p class="primitive-label">Engineering Perspective</p>
-  <h2>From Electromagnetic Behavior to Algorithms and Implementation</h2>
-  <p>
-    Modern wireless products rarely fit neatly within a single engineering
-    discipline. Antenna and chassis behavior, RF and analog impairments,
-    digital receiver processing, modem implementation, and platform
-    constraints interact at the system level. My work focuses on connecting
-    these layers—using physical understanding, models, simulation,
-    measurement, and system-level debugging to turn observed behavior into
-    implementable engineering solutions.
-  </p>
-</section>
+{% include publications.html items=site.data.publications %}
 
-<section class="contact-section">
-  <p class="primitive-label">Contact & Profiles</p>
-  {% include contact-block.html %}
+<section class="home-closing" aria-label="Engineering perspective and contact">
+  <div class="home-closing__panel">
+    <p class="eyebrow">Engineering perspective</p>
+    <h2>Connecting behavior across layers</h2>
+    <p>My focus is the connection between electromagnetic and antenna behavior, RF-system effects, receiver algorithms, and implementation verified through simulation and measurement.</p>
+    <p><a href="{{ '/about/' | relative_url }}">Read the professional narrative</a></p>
+  </div>
+  <div class="home-closing__panel">
+    <p class="eyebrow">Contact and profiles</p>
+    <h2>Evaluate or get in touch</h2>
+    {% include contact-block.html %}
+  </div>
 </section>

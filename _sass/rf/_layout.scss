@@ -26,12 +26,12 @@
   min-width: 0;
 }
 
-.reading-column {
-  width: min(100%, var(--measure-reading));
-}
-
 .page-shell {
   padding-block: var(--space-12) var(--space-20);
+}
+
+.home-page {
+  padding-block: var(--space-4) var(--space-20);
 }
 
 .page-shell__header {
@@ -49,11 +49,19 @@
   min-width: 0;
 }
 
+.page-shell--wide .page-shell__body {
+  width: 100%;
+}
+
 .page-shell__body > :first-child {
   margin-block-start: var(--space-8);
 }
 
 @media (max-width: 47.99rem) {
+  .home-page {
+    padding-block-end: var(--space-12);
+  }
+
   .page-shell {
     padding-block: var(--space-8) var(--space-12);
   }

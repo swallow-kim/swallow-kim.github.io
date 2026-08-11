@@ -1,0 +1,26 @@
+{% assign publications = include.items | default: site.data.publications %}
+{% if publications and publications.size > 0 %}
+  <section class="home-section publications-section" aria-labelledby="publications-title">
+    <header class="section-heading">
+      <div>
+        <p class="eyebrow">Public record</p>
+        <h2 id="publications-title">Selected Publications & Research</h2>
+      </div>
+      <p>Verified publications and public technical work.</p>
+    </header>
+    <ol class="publication-list">
+      {% for publication in publications %}
+        <li class="publication-item">
+          <p class="publication-item__title">
+            {% if publication.url %}<a href="{{ publication.url }}">{{ publication.title }}</a>{% else %}{{ publication.title }}{% endif %}
+          </p>
+          <p class="publication-item__citation">
+            {{ publication.authors | join: ", " }}. <cite>{{ publication.venue }}</cite>{% if publication.volume %}, vol. {{ publication.volume }}{% endif %}{% if publication.issue %}, no. {{ publication.issue }}{% endif %}{% if publication.pages %}, pp. {{ publication.pages }}{% endif %}, {{ publication.year }}.
+          </p>
+          <p class="publication-item__meta">{{ publication.authorship }} · DOI: <a href="{{ publication.url }}">{{ publication.doi }}</a></p>
+          {% if publication.description %}<p>{{ publication.description }}</p>{% endif %}
+        </li>
+      {% endfor %}
+    </ol>
+  </section>
+{% endif %}

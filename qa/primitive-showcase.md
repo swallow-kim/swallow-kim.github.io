@@ -10,32 +10,40 @@ robots: noindex, nofollow
 
 <div class="showcase shell">
   <section class="showcase__section" aria-labelledby="showcase-header">
-    <p class="primitive-label">Header and footer</p>
+    <p class="eyebrow">Header and footer</p>
     <h2 id="showcase-header">Global landmarks</h2>
     <p>The live header and footer surrounding this page demonstrate labelled navigation, current state, 44px targets, and visible keyboard focus.</p>
   </section>
 
   <section class="showcase__section" aria-labelledby="showcase-notes">
-    <p class="primitive-label">Note-list row</p>
+    <p class="eyebrow">Note-list row</p>
     <h2 id="showcase-notes">Ledger rows and long-title stress</h2>
     <ul class="note-list">
-      {% include note-row.html chapter="01" title="Why Are Mobile Antennas So Difficult?" url="/posts/01-why-mobile-antenna-design-is-hard/" meta="mobile antennas · RF constraints · device integration" %}
-      {% include note-row.html chapter="02" title="The Ground Is Not Just Ground" url="/posts/02-the-ground-is-not-just-ground/" meta="ground plane · chassis current · small antennas" %}
-      {% include note-row.html chapter="XX" title="A deliberately long technical heading that tests wrapping without clipping, overlap, fixed heights, or primary horizontal overflow at narrow widths" meta="content stress · long labels · responsive reflow" %}
+      {% include note-row.html chapter="01" title="Why Are Mobile Antennas So Difficult?" url="/posts/01-why-mobile-antenna-design-is-hard/" summary="A concise summary tests the complete production row anatomy." meta="May 25, 2026" %}
+      {% include note-row.html chapter="02" title="The Ground Is Not Just Ground" url="/posts/02-the-ground-is-not-just-ground/" summary="Ground plane, chassis current, and small-antenna behavior." meta="Jun 08, 2026" %}
+      {% include note-row.html chapter="XX" title="A deliberately long technical heading that tests wrapping without clipping, overlap, fixed heights, or primary horizontal overflow at narrow widths" summary="Content stress verifies long labels and responsive reflow." meta="Unavailable" %}
     </ul>
   </section>
 
   <section class="showcase__section" aria-labelledby="showcase-progress">
-    <p class="primitive-label">Series progress</p>
+    <p class="eyebrow">Series progress</p>
     <h2 id="showcase-progress">Published, current, and upcoming states</h2>
-    {% include series-progress.html complete=4 total=9 current=4 %}
+    {% include series-progress.html title="Mobile Antenna Design" complete=4 total=9 %}
   </section>
 
   <section class="showcase__section" aria-labelledby="showcase-article">
-    <p class="primitive-label">Article shell and TOC</p>
+    <p class="eyebrow">Article shell and TOC</p>
     <h2 id="showcase-article">Long-form reading structure</h2>
     <div class="article-shell">
       <article class="article-shell__body">
+        <nav class="article-toc" aria-labelledby="showcase-toc-title">
+          <p class="article-toc__title" id="showcase-toc-title">On this page</p>
+          <ol id="markdown-toc">
+            <li><a href="#stress-heading">Long heading</a></li>
+            <li><a href="#technical-data">Technical data</a></li>
+            <li><a href="#contact-example">Contact</a></li>
+          </ol>
+        </nav>
         <h3 id="stress-heading">An intentionally long article heading about measuring coupled mobile-antenna behavior across constrained integration environments</h3>
         <p>This reading sample confirms the 60–75 character measure, Source Serif 4 body role, and natural wrapping under content stress. It also includes <a href="#technical-data">an inline link</a> so inline and control focus treatments can be distinguished.</p>
 
@@ -61,21 +69,22 @@ robots: noindex, nofollow
           </table>
         </div>
 
-        <pre tabindex="0" aria-label="Scrollable code sample"><code>function sweep(frequencyStart, frequencyStop, samples) {
+        <div class="code-scroll" tabindex="0" role="region" aria-label="Scrollable code sample">
+          <pre><code>function sweep(frequencyStart, frequencyStop, samples) {
   return Array.from({ length: samples }, (_, index) =&gt; frequencyStart + index * ((frequencyStop - frequencyStart) / (samples - 1)));
 }</code></pre>
+        </div>
       </article>
-      {% include toc.html %}
     </div>
   </section>
 
   <section class="showcase__section" aria-labelledby="showcase-contact">
-    <p class="primitive-label">Contact block</p>
+    <p class="eyebrow">Contact block</p>
     {% include contact-block.html %}
   </section>
 
   <section class="showcase__section" aria-labelledby="showcase-states">
-    <p class="primitive-label">Interactive states</p>
+    <p class="eyebrow">Interactive states</p>
     <h2 id="showcase-states">Default, hover, focus, active, and disabled</h2>
     <div class="showcase__states">
       <a class="button" href="#showcase-states">Default action</a>

@@ -2,6 +2,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 {% seo %}
 {% feed_meta %}
+{% if page.layout == "note" and page.date %}<meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}">{% endif %}
+{% if page.last_modified_at %}<meta property="article:modified_time" content="{{ page.last_modified_at | date_to_xmlschema }}">{% endif %}
+<link rel="icon" href="{{ '/assets/images/rf-grid.svg' | relative_url }}" type="image/svg+xml">
 <link rel="preload" href="{{ '/assets/fonts/source-serif-4/source-serif-4-latin-400-normal.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="{{ '/assets/fonts/ibm-plex-mono/ibm-plex-mono-latin-400-normal.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">

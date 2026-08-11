@@ -8,12 +8,12 @@ html {
   background: var(--color-paper);
   color: var(--color-ink);
   font-size: 100%;
-  overflow-x: hidden;
   scroll-behavior: auto;
 }
 
 body {
   margin: 0;
+  max-width: 100%;
   min-width: 0;
   background: var(--color-paper);
   color: var(--color-ink);
@@ -52,6 +52,7 @@ img,
 svg {
   display: block;
   max-width: 100%;
+  height: auto;
 }
 
 h1,
@@ -80,6 +81,15 @@ figure {
   margin-block: 0 var(--space-6);
 }
 
+.prose {
+  width: min(100%, var(--measure-reading));
+}
+
+.lead {
+  font-size: var(--type-lead);
+  line-height: 1.55;
+}
+
 blockquote {
   margin-inline: 0;
   padding: var(--space-5) var(--space-6);
@@ -101,8 +111,8 @@ kbd {
   padding-inline: var(--space-1);
 }
 
-pre,
-.table-scroll {
+.table-scroll,
+.code-scroll {
   max-width: 100%;
   overflow-x: auto;
   overscroll-behavior-inline: contain;
@@ -120,11 +130,28 @@ pre code {
   border: 0;
 }
 
+.code-scroll pre {
+  min-width: max-content;
+  margin: 0;
+}
+
 table {
   width: 100%;
   min-width: 36rem;
   border-collapse: collapse;
   background: var(--color-surface);
+}
+
+.table-scroll > table {
+  margin-bottom: 0;
+}
+
+caption {
+  padding-block-end: var(--space-3);
+  color: var(--color-muted);
+  font-family: var(--font-technical);
+  font-size: var(--type-meta);
+  text-align: start;
 }
 
 th,
@@ -144,6 +171,10 @@ hr {
   margin-block: var(--space-10);
   border: 0;
   border-top: var(--rule-thin) solid var(--color-rule);
+}
+
+:target {
+  scroll-margin-block-start: var(--space-6);
 }
 
 button,

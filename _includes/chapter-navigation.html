@@ -1,0 +1,25 @@
+{% assign series_notes = site.notes | where: "series", page.series | where: "published", true | sort: "chapter" %}
+{% assign previous_chapter = page.chapter | minus: 1 %}
+{% assign next_chapter = page.chapter | plus: 1 %}
+{% assign previous_note = nil %}
+{% assign next_note = nil %}
+{% for note in series_notes %}
+  {% if note.chapter == previous_chapter %}{% assign previous_note = note %}{% endif %}
+  {% if note.chapter == next_chapter %}{% assign next_note = note %}{% endif %}
+{% endfor %}
+{% if previous_note or next_note %}
+  <nav class="chapter-nav" aria-label="Chapter navigation">
+    {% if previous_note %}
+      <a class="chapter-nav__link chapter-nav__link--previous" href="{{ previous_note.url | relative_url }}">
+        <span class="chapter-nav__direction">Previous chapter</span>
+        <span>{{ previous_note.title }}</span>
+      </a>
+    {% endif %}
+    {% if next_note %}
+      <a class="chapter-nav__link chapter-nav__link--next" href="{{ next_note.url | relative_url }}">
+        <span class="chapter-nav__direction">Next chapter</span>
+        <span>{{ next_note.title }}</span>
+      </a>
+    {% endif %}
+  </nav>
+{% endif %}
