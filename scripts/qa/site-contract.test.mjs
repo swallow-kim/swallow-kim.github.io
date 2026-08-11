@@ -16,6 +16,17 @@ const routes = [
   "/posts/03-ground-and-chassis-mode/",
   "/posts/04-j-and-m-controlling-the-coupling-mechanism/",
 ];
+const chapterFigures = [
+  "fig1_2",
+  "fig2_1",
+  "fig2_2",
+  "fig3_1",
+  "fig3_2",
+  "fig3_3",
+  "fig4_1",
+  "fig4_2",
+  "fig4_4",
+].flatMap((stem) => [`${stem}.png`, `${stem}.svg`]);
 
 const routeFile = (root, route) =>
   route === "/" ? path.join(root, "index.html")
@@ -39,6 +50,9 @@ const makeSite = async () => {
   await writeFile(path.join(root, "sitemap.xml"), `<urlset><loc>${origin}/</loc></urlset>`);
   await mkdir(path.join(root, "figures"));
   await writeFile(path.join(root, "figures", "fig1_1.png"), "fixture");
+  for (const figure of chapterFigures) {
+    await writeFile(path.join(root, "figures", figure), "fixture");
+  }
   return root;
 };
 
@@ -108,6 +122,17 @@ test("allows only the staged baseline figure while requiring its file", async ()
     await writeFile(routeFile(root, "/"), html("/").replace("</body>", '<img src="/figures/fig1_1.png"></body>'));
     const result = await validateSite({ site: root, stage: "baseline" });
     assert(!result.errors.some((error) => error.includes("image missing alt")));
+  } finally {
+    await rm(root, { force: true, recursive: true });
+  }
+});
+
+test("rejects a missing required chapter figure asset", async () => {
+  const root = await makeSite();
+  try {
+    await rm(path.join(root, "figures", "fig4_4.png"), { force: true });
+    const result = await validateSite({ site: root, stage: "fixture" });
+    assert(result.errors.some((error) => error.includes("missing chapter figure: /figures/fig4_4.png")));
   } finally {
     await rm(root, { force: true, recursive: true });
   }

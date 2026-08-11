@@ -7,6 +7,7 @@
   },
   "scripts": {
     "doctor": "node scripts/qa/doctor.mjs",
+    "test:doctor": "node --test scripts/qa/doctor.test.mjs",
     "test:contract": "node --test scripts/qa/site-contract.test.mjs",
     "test:design": "node --test scripts/qa/design-system-contract.test.mjs",
     "check:design": "node scripts/qa/design-system-contract.mjs --root . --site _site --qa-site _site_qa",

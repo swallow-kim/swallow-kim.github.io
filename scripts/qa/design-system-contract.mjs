@@ -81,6 +81,8 @@ export async function validateDesignSystem({ root = ".", site, qaSite } = {}) {
   if (!/^\s*:focus-visible\s*\{/m.test(combined)) errors.push("missing visible focus style");
   if (!/min-(?:height|block-size):\s*(?:var\([^)]*control[^)]*\)|44px)/.test(combined)) errors.push("missing 44px control contract");
   if (!/prefers-reduced-motion:\s*reduce/.test(combined)) errors.push("missing reduced-motion override");
+  if (/primitive-(?:button|tag|label)/.test(combined)) errors.push("legacy primitive class remains");
+  if (await exists(path.join(root, "_includes", "toc.html"))) errors.push("legacy hard-coded TOC include remains");
   if (/https?:\/\/[^"')\s]+\.(?:woff2?|ttf|otf)/i.test(combined)) errors.push("remote font request in source");
 
   for (const [file, text] of sourceText) {

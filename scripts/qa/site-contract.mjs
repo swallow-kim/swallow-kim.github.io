@@ -6,12 +6,13 @@ const ORIGIN = "https://swallow-kim.github.io";
 const CURRENT_ROUTES = [
   "/",
   "/about/",
+  "/notes/",
   "/posts/01-why-mobile-antenna-design-is-hard/",
   "/posts/02-the-ground-is-not-just-ground/",
   "/posts/03-ground-and-chassis-mode/",
   "/posts/04-j-and-m-controlling-the-coupling-mechanism/",
 ];
-const FINAL_ROUTES = ["/notes/", "/404.html"];
+const FINAL_ROUTES = ["/404.html"];
 const PRIVATE_MARKERS = [
   "05-when-the-ground-is-too-small",
   "06-metal-chassis-obstacle-or-radiator",
@@ -24,6 +25,17 @@ const PRIVATE_MARKERS = [
   "Mobile Antenna Design Notes #8",
   "Mobile Antenna Design Notes #9",
 ];
+const REQUIRED_CHAPTER_FIGURES = [
+  "fig1_2",
+  "fig2_1",
+  "fig2_2",
+  "fig3_1",
+  "fig3_2",
+  "fig3_3",
+  "fig4_1",
+  "fig4_2",
+  "fig4_4",
+].flatMap((stem) => [`${stem}.png`, `${stem}.svg`]);
 
 const routeFile = (site, route) =>
   route === "/"
@@ -94,6 +106,11 @@ export async function validateSite({ site, stage = "baseline" }) {
 
   if (!(await exists(path.join(site, "figures", "fig1_1.png")))) {
     errors.push("missing baseline figure: /figures/fig1_1.png");
+  }
+  for (const figure of REQUIRED_CHAPTER_FIGURES) {
+    if (!(await exists(path.join(site, "figures", figure)))) {
+      errors.push(`missing chapter figure: /figures/${figure}`);
+    }
   }
 
   const h1Routes = strict ? requiredRoutes : ["/about/"];
