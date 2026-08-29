@@ -4,11 +4,11 @@ title: "Mobile Antenna Design Notes #2: The Ground Is Not Just Ground"
 permalink: /posts/02-the-ground-is-not-just-ground/
 series: mobile-antenna-design
 chapter: 2
-summary: "How the phone ground and chassis participate in radiation and why a small antenna cannot be analyzed in isolation."
+summary: "How a finite handset ground supports characteristic currents and participates in radiation."
 topics:
-  - ground plane
+  - characteristic modes
   - chassis current
-  - small antennas
+  - finite ground plane
 published: true
 date: 2026-06-08 21:28:53 +0900
 ---
@@ -20,338 +20,137 @@ date: 2026-06-08 21:28:53 +0900
 </nav>
 
 > **Core idea**  
-> In mobile antenna design, the ground is not merely a zero-volt reference.  
-> It is a finite conducting body that can support current modes, interact with the antenna element, and participate directly in radiation.
+> At RF, the handset ground is a finite conducting body with its own current distributions. It can carry a large part of the radiating current.
 
 ---
 
-## 1. Why “ground” can be misleading
+## 1. Why the Word “Ground” Can Be Misleading
 
-In circuit diagrams, ground looks simple.
+In a circuit diagram, ground is a reference node. This is a useful approximation at low frequency. A handset PCB ground at RF is different. It has finite dimensions, cutouts, vias, screws, shield cans, frame contacts, and nearby metal structures.
 
-It is drawn as a reference node. It is where voltages are measured from. In many low-frequency circuits, we often treat ground as an ideal zero-volt reference. This is a very useful abstraction.
-
-But in RF and antenna design, especially inside a mobile device, this abstraction quickly becomes incomplete.
-
-A PCB ground at RF is not an ideal zero-volt plane. It is a finite conductor with:
-
-- length and width
-- shape and cutouts
-- vias and screws
-- contact points
-- nearby metal structures
-- discontinuities
-- coupling to display, battery, shield cans, and chassis
-
-Current does not spread over it uniformly. Voltage is not perfectly constant everywhere. At high frequencies, the ground itself behaves as a distributed electromagnetic structure.
-
-This is why the word **ground** can be misleading in mobile antenna design.
+The complete PCB ground cannot be treated as one lumped equipotential node at RF. Surface current and charge vary with position, and the conducting body participates in the electromagnetic problem.
 
 <div class="table-scroll" tabindex="0" role="region" aria-label="Circuit and antenna viewpoints of ground" markdown="1">
 
-| Viewpoint | What “ground” means |
+| Viewpoint | Meaning of “ground” |
 |---|---|
-| Circuit view | A reference node |
-| RF / antenna view | A finite conducting structure that can carry RF current and radiate |
+| Circuit view | Reference node for voltage and current |
+| Antenna view | Finite conducting body that supports surface current and radiation |
 
 </div>
 
-From a circuit point of view, ground is a reference.
+Not every part of the ground radiates equally. The relevant point is that the structure supports specific current distributions, and some of them are useful radiating modes in the target band.
 
-From an antenna point of view, ground can be a radiator.
+---
 
-This does not mean that every part of the ground radiates equally. It means that the finite ground can support specific current distributions, and those current distributions can contribute significantly to radiation.
+## 2. A Finite Ground Has Natural Current Distributions
+
+Consider a simple **150 mm × 80 mm** rectangular conducting plate. As its electrical size increases, standing-wave-like surface-current distributions can appear.
+
+For a simplified fundamental long-axis mode:
+
+- the longitudinal surface-current magnitude is largest near the center;
+- current decreases toward the short ends;
+- surface charge and the associated fringing electric field are stronger near the ends.
 
 <figure class="technical-figure">
   <picture tabindex="0">
     <source srcset="/figures/fig2_1.svg" type="image/svg+xml" />
-    <img src="/figures/fig2_1.png" alt="Two-panel schematic comparing an approximately equipotential circuit reference conductor with a finite RF conductor carrying nonuniform longitudinal surface current and showing restrained end-region charge and fringing-electric-field cues." width="1800" height="1080" loading="lazy" />
+    <img src="/figures/fig2_1.png" alt="Conceptual rectangular handset ground with longitudinal surface current strongest near the center and surface-charge or fringing-electric-field regions near the ends, followed by normalized one-dimensional current and charge proxy curves." width="2410" height="1840" loading="lazy" />
   </picture>
-  <figcaption class="figure-caption">Fig. 2-1. Circuit-level and RF views of a finite ground plane. At low frequencies, ground can often be treated as an approximately equipotential reference. At RF, a finite conductor supports nonuniform surface current, charge, and electromagnetic fields and can become part of the radiating structure.</figcaption>
+  <figcaption class="figure-caption">Fig. 2-1. First-order picture of the fundamental long-axis mode of a finite rectangular ground. The curves are conceptual and are not characteristic-mode simulation results.</figcaption>
 </figure>
+
+The same plate also supports higher-order and transverse modes. In a product, the battery, display, frame, and contacts perturb these modes. The simplified plate is still useful because it shows that the current maximum and electric-field maximum can occur at different locations.
 
 ---
 
-## 2. A finite ground has natural current modes
+## 3. What It Means to “Use the Ground”
 
-A simple rectangular PCB ground is enough to understand the idea.
+When a handset antenna uses the ground, the ground is more than a return path. The feed structure drives current on the finite PCB ground or chassis, and that current contributes to radiation.
 
-Imagine a rectangular metal plate:
+Changing the PCB length, frame contacts, shield cans, screws, or flex routing changes the current path. More precisely, the characteristic currents and their eigenvalue trajectories change. The antenna geometry may remain the same, but the complete antenna response does not.
 
-- length: **150 mm**
-- width: **80 mm**
+---
 
-At low frequency, we may think of it as one uniform ground plane. But as the frequency increases, the physical size of the ground becomes comparable to a significant fraction of the wavelength. Then the ground can support standing-wave-like current distributions.
+## 4. TCM and CMA
 
-For example, along the long axis of the board, a half-wavelength-like current mode may appear.
+The **theory of characteristic modes (TCM)** represents the surface current on a conducting body as a weighted sum of characteristic currents. Applying the method to a specific structure is commonly called **characteristic mode analysis (CMA)**.
 
-In this mode:
+For a perfectly conducting body, each characteristic mode has:
 
-- current is relatively strong near the center of the board
-- current is weaker near the two ends
-- surface-charge accumulation and the associated fringing electric field are stronger near the ends
+- a characteristic current distribution, \(J_n\);
+- an eigenvalue, \(\lambda_n\), or the corresponding characteristic angle;
+- a modal far field;
+- a source-independent resonance behavior.
 
-This is similar to the intuition we have from a half-wave resonator.
+The **modal significance**
 
-The board can also support:
+\[
+\mathrm{MS}_n = \left|\frac{1}{1+j\lambda_n}\right|
+\]
 
-- a mode along the short axis
-- higher-order modes along the long axis
-- modes distorted by nearby components and chassis structures
+is a source-independent indicator of how close a mode is to resonance. It does not tell us whether a particular feed excites that mode strongly.
 
-The exact modes depend on board size, shape, surrounding materials, and boundary conditions. But the basic idea is simple:
+Feed coupling is described by a **modal excitation coefficient**. The driven modal weight also includes the eigenvalue term. Depending on the formulation and software, this result is reported as a modal weighting coefficient or modal expansion coefficient.
 
-> **A finite ground has its own natural current modes.**
+Therefore:
 
-This is one of the most important ideas in mobile antenna design.
+> A resonant characteristic mode is available for excitation, but it may still have a small weight in the driven antenna current if the feed position or orientation is poor.
 
 <figure class="technical-figure">
   <picture tabindex="0">
-    <source srcset="/figures/fig2_2.svg" type="image/svg+xml" />
-    <img src="/figures/fig2_2.png" alt="Top view of a conceptual 150 by 80 millimeter rectangular ground with longitudinal current strongest near the center and charge and fringing-electric-field cues near the ends, followed by normalized current and charge or electric-field proxy curves." width="1800" height="1080" loading="lazy" />
+    <img src="/figures/fig2_2.png" alt="Actual simulated characteristic-current distributions for the first three modes of a 30 millimeter by 150 millimeter rectangular conducting plate, shown with their modal-significance curves." width="2200" height="1350" loading="lazy" />
   </picture>
-  <figcaption class="figure-caption">Fig. 2-2. Simplified one-dimensional representation of the fundamental long-axis mode of a finite rectangular ground. The surface-current envelope is strongest near the center, while surface-charge accumulation—and the associated fringing electric field—is stronger toward the two ends. The distributions are conceptual first-order approximations rather than characteristic-mode simulation results.</figcaption>
+  <figcaption class="figure-caption">Fig. 2-2. Characteristic currents and modal significance of a 30 mm × 150 mm rectangular ground. This is actual simulation data from the author’s dissertation and uses a different geometry from the 150 mm × 80 mm conceptual example above. Source: M.-G. Kim, Ph.D. dissertation, Hanyang University, 2020, Figs. 2.2 and 2.3.</figcaption>
 </figure>
 
 ---
 
-## 3. What it means when an antenna “uses the ground”
+## 5. A Useful Design Sequence
 
-When we say that a mobile antenna **uses the ground**, we are not simply saying that the ground is a return path.
+CMA is useful when it changes the order of the design work. Instead of starting only from an antenna name, first inspect the conducting structure:
 
-We are saying that the antenna element excites one or more current modes on the finite ground or chassis, and those modes participate in radiation.
+1. Define the PCB ground, frame, display metal, and important contacts.
+2. Identify characteristic modes near the target band.
+3. Check the characteristic current and field distribution of each candidate mode.
+4. Select a feed location and geometry with a high modal excitation coefficient.
+5. Verify the driven current, radiation efficiency, and user-loading sensitivity with the complete product model.
 
-This is also why the same antenna element can behave differently on different boards.
-
-The antenna element may be the same, but the ground modes are not.
-
-A change in any of the following can modify the current path:
-
-- PCB length
-- PCB width
-- metal frame structure
-- display metal
-- battery placement
-- shield cans
-- screw contacts
-- FPCB routing
-- chassis contact points
-
-Once the current path changes, the available modes also change.
+Modal significance alone is not a feed-design metric. A mode with high modal significance can remain weak in the driven result.
 
 ---
 
-## 4. Characteristic Mode Analysis: looking at the body before the feed
+## 6. How Far Can the Rectangular-Plate Model Be Used?
 
-A useful way to analyze this more systematically is called **Characteristic Mode Analysis**, often abbreviated as **CMA** or **TCM**.
+A 150 mm conductor is close to a half wavelength around 1 GHz in free space. The actual chassis-mode frequency of a handset is shifted by its width, nearby dielectrics, frame, display, battery, and boundary conditions. The simple length estimate is therefore only a starting point.
 
-The basic idea of characteristic modes is to look at the conducting body itself before focusing on a specific feed.
+It is still useful for two reasons:
 
-Instead of asking first:
+- it indicates why a long-axis chassis mode often matters around the upper low band and low-GHz region;
+- it separates the current maximum from the charge and fringing-electric-field maxima.
 
-> What is the input impedance of this antenna?
-
-we ask:
-
-> What current modes can this structure naturally support?
-
-This shift is powerful.
-
-If we analyze a finite ground plane using characteristic modes, we can identify several possible current distributions. Each mode has its own:
-
-- resonant behavior
-- current pattern
-- field distribution
-- radiation potential
-- excitation difficulty from a given location
-
-Some modes may be useful for radiation at the target frequency. Others may not be useful. Some modes may be easy to excite from a given antenna location. Others may be difficult to excite from that location.
-
-One important distinction is that a mode being resonant does not mean that it will automatically be strongly excited.
-
-Characteristic-mode analysis can tell us which natural modes are available near the target frequency. But the actual contribution of each mode also depends on how strongly the antenna source couples to it.
-
-A useful mode can therefore exist at the right frequency but remain weakly excited if the antenna is placed or oriented poorly.
-
-<!-- TODO: Fig. 2-3 requires author-supplied characteristic-mode evidence.
-Asset: /figures/fig2_3.png
-Required source: original CMA solver exports or the author's clean thesis-source composite containing characteristic-current distributions for several modes and the modal-significance response of the 30 mm × 150 mm rectangular ground. Do not substitute analytical curves or synthetic heatmaps.
-Alt: Composite of actual characteristic-current distributions and modal-significance responses for a 30 millimeter by 150 millimeter rectangular ground.
-Caption: Fig. 2-3. Example characteristic-mode analysis of a 30 mm × 150 mm rectangular ground. The characteristic currents illustrate several natural current distributions supported by the conducting body, while the modal-significance response shows that different modes become resonant over different frequency regions. This example uses a different ground geometry from the simplified 150 mm × 80 mm model above.
--->
+The full-wave product model is required for final frequencies and current paths.
 
 ---
 
-## 5. A more physical design process
+## 7. Practical Observations
 
-Characteristic-mode thinking gives us a more physical design process.
+This viewpoint explains several common results:
 
-Instead of starting with an antenna type, we start with the product structure.
-
-Ask first:
-
-- What is the size of the PCB ground?
-- Where is the antenna clearance?
-- Where are the metal frame contacts?
-- Where are the display, battery, shield cans, and screws?
-- Which current path can be used for radiation?
-- Which ground mode is close to the target frequency?
-- Can the available antenna location excite that mode efficiently?
-
-These questions are often more important than choosing between a PIFA, loop, slot, or monopole at the beginning.
-
-> **Design mindset**  
-> Do not start only from “Which antenna type should I use?”  
-> Start from “Which product-level current mode can I excite?”
+- **Good S11, poor efficiency:** the port is matched, but the accepted power is dissipated or does not drive a strong radiating current distribution.
+- **Same element, different board:** the characteristic currents and feed coupling are different.
+- **Frame contact sensitivity:** a contact changes the current path and modal response.
+- **Strong location dependence:** feed position changes the modal excitation coefficient and modal weighting.
 
 ---
 
-## 6. Why the simple rectangular-ground model is still useful
+## 8. Key Message
 
-In a real product, the ground mode is not as clean as a textbook half-wave resonator.
-
-A smartphone is not a perfect rectangular plate. It includes:
-
-- display metal
-- battery metal
-- camera structures
-- shield cans
-- connectors
-- screws
-- FPCB
-- external housing
-- user hand effects
-
-Because of this, the actual current mode may be shifted, distorted, split, or coupled to other structures.
-
-However, the simplified rectangular-ground model is still useful because it gives a first-order mental model.
-
-For instance, if the long dimension of the PCB is around **150 mm**, then a long-axis half-wave-like mode may appear near the low-GHz region.
-
-This is not an exact calculation. The actual frequency depends on:
-
-- effective permittivity
-- nearby metal
-- product structure
-- boundary conditions
-- chassis coupling
-- user interaction
-
-But it gives an initial direction.
-
-It tells us that the long dimension of the ground may be useful for low-band or sub-1 GHz radiation. It also tells us that the current maximum and the charge/electric-field maximum are located in different regions.
-
-This becomes important when deciding where and how to place the antenna element.
+> The handset ground is a finite resonant conductor. CMA identifies the available characteristic currents, while the feed determines which of those modes appear in the driven antenna current.
 
 ---
 
-## 7. The antenna element as an excitation structure
+## Next Chapter Preview
 
-This is where mobile antenna design starts to become interesting.
-
-If the ground has a useful mode, the antenna element does not need to behave as a complete standalone radiator. Instead, it can act as an excitation structure.
-
-Its job is to couple energy into the desired ground mode.
-
-This is a very different way of thinking.
-
-### Antenna-only view
-
-In a simplified antenna-only view, we may ask:
-
-- Is the antenna element length appropriate?
-- Does the matching network create good return loss?
-- Is the local antenna clearance large enough?
-- Does the antenna element resonate near the target band?
-
-### Ground-mode view
-
-In a ground-mode view, we ask a deeper question:
-
-> **Is this antenna element exciting a useful current mode on the product ground?**
-
-That distinction explains many practical observations.
-
----
-
-## 8. Practical observations explained by ground modes
-
-### Observation 1: Good return loss, poor efficiency
-
-An antenna can show good return loss but poor efficiency.
-
-This can happen when the matching network creates an impedance match, but the excited current does not couple well to a radiating ground mode.
-
-### Observation 2: Same antenna, different board, different result
-
-An antenna can perform well on one board but poorly on another board, even with the same geometry.
-
-This can happen because the two boards support different ground modes.
-
-### Observation 3: Metal frame contact changes the result
-
-An antenna can improve when a metal frame is connected at a certain point, but degrade when the contact point changes.
-
-This can happen because the contact modifies the chassis current path.
-
-### Observation 4: Antenna position matters more than expected
-
-An antenna position can be more important than expected.
-
-This can happen because different positions overlap with different parts of the ground-mode field distribution.
-
----
-
-## 9. Ground is part of the antenna system
-
-This is why ground should not be treated as a passive background in mobile antenna design.
-
-It is part of the antenna system.
-
-For many compact mobile antennas, the ground or chassis is the largest and most important radiating body in the product.
-
-The antenna element is small, but the ground is large.
-
-The antenna element creates local current and field excitation, but the ground determines how that excitation spreads and radiates.
-
-A good mobile antenna design therefore begins with the ground.
-
-Not only with:
-
-- the local antenna clearance
-- the matching network
-- the antenna type
-
-But with:
-
-> **the finite conducting body that the antenna will excite.**
-
----
-
-## 10. Key message
-
-> **The ground is not just a reference node.**  
-> In mobile antenna design, the finite ground is a resonant conducting body with its own current modes.
-
-Once we accept this, the next question becomes clear:
-
-- If the ground has current modes, how do we choose the right excitation?
-- Should we place the antenna where the electric field is strong?
-- Should we place it where the current is strong?
-- Should we use a PIFA-like element, a loop, a slot, or a hybrid structure?
-- How does antenna location determine the best coupling mechanism?
-
-These questions lead us to the next chapter.
-
----
-
-## Next chapter preview
-
-In **Chapter 3**, we will discuss how to excite a ground mode.
-
-We will look at the relationship between ground-mode field distribution and antenna source type. This will introduce the practical design idea of:
-
-- electric-current-like excitation
-- magnetic-current-like excitation
-- **J-type coupling**
-- **M-type coupling**
+Chapter 3 discusses feed placement and two established coupling-element concepts: **capacitive coupling elements (CCE)** and **inductive coupling elements (ICE)**.

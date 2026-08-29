@@ -1,0 +1,6 @@
+case,sim_inductor_nH,sim_capacitor_pF,sim_minus6dB_bandwidth_MHz,meas_inductor_nH,meas_capacitor_pF,meas_minus6dB_bandwidth_MHz
+1,0.1,1.07,9.1,0,1.1,10
+2,5.27,0.85,9.2,4,0.85,15
+3,13.45,0.60,10.0,14.7,0.60,25
+4,26,0.35,11.9,25,0.35,30
+5,48.4,0.10,16.6,40.8,0.10,41
