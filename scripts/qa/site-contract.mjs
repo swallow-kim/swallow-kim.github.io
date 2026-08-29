@@ -26,16 +26,10 @@ const PRIVATE_MARKERS = [
   "Mobile Antenna Design Notes #9",
 ];
 const REQUIRED_CHAPTER_FIGURES = [
-  "fig1_2",
-  "fig2_1",
-  "fig2_2",
-  "fig3_1",
-  "fig3_2",
-  "fig3_3",
-  "fig4_1",
-  "fig4_2",
-  "fig4_4",
-].flatMap((stem) => [`${stem}.png`, `${stem}.svg`]);
+  ...["fig1_2", "fig1_3", "fig2_1", "fig3_1", "fig4_1", "fig4_3"].flatMap((stem) => [`${stem}.png`, `${stem}.svg`]),
+  "fig2_2.png",
+  "fig4_2.png",
+];
 
 const routeFile = (site, route) =>
   route === "/"

@@ -1,14 +1,14 @@
 ---
 layout: note
-title: "Mobile Antenna Design Notes #4: J and M: Controlling the Coupling Mechanism"
+title: "Mobile Antenna Design Notes #4: Controlling Current Distribution and Chassis-Mode Coupling"
 permalink: /posts/04-j-and-m-controlling-the-coupling-mechanism/
 series: mobile-antenna-design
 chapter: 4
-summary: "How antenna geometry and reactive loading control electric- and magnetic-response coupling to ground and chassis modes."
+summary: "How antenna geometry and reactive loading reshape surface current and change coupling to a handset chassis mode."
 topics:
-  - electric current
-  - magnetic current
-  - coupling
+  - surface current
+  - reactive loading
+  - chassis-mode coupling
 published: true
 date: 2026-08-06 11:46:44 +0900
 ---
@@ -19,176 +19,123 @@ date: 2026-08-06 11:46:44 +0900
 {:toc}
 </nav>
 
-## 1. J and M Are Not Strict Categories
+## 1. Antenna Names Do Not Define the Current Distribution
 
-In the previous chapter, we introduced J-type and M-type excitation as a practical way to understand how an antenna element couples to a ground or chassis mode.
+PIFA, loop, slot, and monopole are useful topology names. They do not uniquely define the driven current distribution or the coupling to the chassis.
 
-A J-type source is associated mainly with electric-current-like excitation. Structures such as monopoles, IFAs, and PIFAs often have strong conduction current along an open-ended metal path and strong electric field near the open end.
+Two PIFAs can behave differently because of feed-to-short spacing, open-end capacitance, branch geometry, clearance, and frame coupling. Two loops can also have different current distributions because of loop area, gap position, loading components, and the surrounding ground.
 
-An M-type source is associated mainly with magnetic-response-dominant excitation. A conducting loop carries ordinary electric current but can create a magnetic-dipole-like response through circulating current, while slots and apertures can also be described using equivalent magnetic-current concepts. These structures can couple effectively to magnetic-field-dominant regions of a ground mode when their orientation and field distribution are appropriate.
+For chassis-mode design, the more useful questions are:
 
-However, this distinction can easily become misleading if it is treated as a strict antenna classification.
+- Where are the current maximum and minimum on the antenna element?
+- How much current reaches the far end of the structure?
+- Which chassis mode is excited by that current distribution?
+- How much conductor and component loss is added?
 
-A PIFA is not purely J-type.
+---
 
-A loop is not purely M-type.
+## 2. Geometry and Reactive Loading
 
-A slot does not generate only magnetic coupling.
+Increasing the current-path length, narrowing a trace, or adding a lumped inductor often increases the electrical length and inductive reactance in a given layout. The result is geometry-dependent. A narrow trace and a high-value inductor can also increase loss because of current crowding and finite component Q.
 
-Every practical antenna structure contains both electric and magnetic coupling components. One component may be dominant, but the actual behavior depends on the antenna geometry, feed position, shorting location, loading elements, ground clearance, and surrounding product structure.
+Capacitive coupling can be changed with an open plate, a parallel edge, a small gap, or a lumped capacitor. These changes redistribute current and stored electric energy. In some geometries, strong capacitive loading also lowers radiation resistance or increases tolerance sensitivity, but this is not a universal monotonic rule.
 
-Therefore, the more useful question is not:
+The practical point is that a reactive component does more than move the input resonance. It can change the current distribution and therefore the coupling to the chassis mode.
 
-> Is this antenna a PIFA or a loop?
+---
 
-The more useful question is:
+## 3. Loaded-Antenna Example
 
-> How much electric coupling and magnetic coupling does this structure create at the available antenna location?
-
-This shift is important because antenna names do not uniquely determine the actual current and field distributions.
-
-Two antennas may both be called PIFAs but behave differently because their feed-to-short spacing, open-end area, branch geometry, or coupling to the ground is different. Two loop antennas may also behave differently because their loop area, gap position, loading capacitor, and surrounding ground structure create different combinations of electric and magnetic coupling.
-
-The antenna type is only a starting topology. The final coupling mechanism is determined by the current and field distribution.
+The example below is taken from the author’s dissertation. The ground plane is **50 mm × 115 mm**, and the antenna occupies a **5 mm × 25 mm** clearance at the top edge. A series inductor is placed near the feed, and a series capacitor is placed near the opposite end. The feed spacing D<sub>f</sub> is adjusted for matching.
 
 <figure class="technical-figure">
   <picture tabindex="0">
     <source srcset="/figures/fig4_1.svg" type="image/svg+xml" />
-    <img src="/figures/fig4_1.png" alt="Three conceptual antenna structures: an open-ended electric-response-dominant path with physical current and electric-field cues, an ordinary-current loop with a magnetic response, and a hybrid structure combining open-ended and circulating responses." width="1800" height="1080" loading="lazy" />
+    <img src="/figures/fig4_1.png" alt="Reproduced line drawing of a 50 millimeter by 115 millimeter ground plane with a 5 millimeter by 25 millimeter top-edge antenna clearance, showing a series inductor near the feed, a series capacitor near the end, and feed spacing D sub f." width="2456" height="1585" loading="lazy" />
   </picture>
-  <figcaption class="figure-caption">Fig. 4-1. Conceptual antenna structures illustrating different coupling characters: (a) electric-response-dominant, or J-like, excitation; (b) magnetic-response-dominant, or M-like, excitation; and (c) hybrid excitation containing substantial contributions from both mechanisms. The labels describe dominant coupling behavior rather than strict antenna categories or literal source types.</figcaption>
+  <figcaption class="figure-caption">Fig. 4-1. Loaded-antenna geometry reproduced from the author’s dissertation, Fig. 2.12. The inductor and capacitor values are varied while the resonance is retuned near 800 MHz.</figcaption>
 </figure>
 
----
+All five cases were tuned near **800 MHz**. A small end capacitance allows little current to pass through the end point, giving a more monopole-like distribution. A larger end capacitance closes the current path more strongly and gives a more loop-like distribution.
 
-## 2. Controlling the Inductive Behavior
-
-To increase inductive behavior, we generally need to increase the effective current path or reduce capacitive coupling to the surrounding ground.
-
-This can be done by making the current path longer, narrowing the conductor, introducing a meander, or moving part of the antenna pattern farther from a nearby ground edge. A lumped inductor can also be added to increase the effective electrical length.
-
-These methods can lower the resonance frequency within a limited physical volume. However, inductive loading is not free.
-
-A narrow and long conductor increases conductor loss. A lumped inductor introduces series resistance and finite Q. When the radiation resistance of the compact antenna is already low, even a small additional series resistance can noticeably reduce radiation efficiency.
-
-This is why a matching or tuning component that produces an excellent S-parameter result may still degrade the actual antenna performance.
-
-The objective is not simply to maximize inductance. It is to create the required current distribution while keeping loss under control.
+This terminology describes the current distribution. It does not mean that one case is a pure monopole and the other is a pure loop.
 
 ---
 
-## 3. Controlling the Capacitive Behavior
+## 4. Same Outline, Different Surface Current
 
-Capacitive behavior can be increased by enlarging an open-ended plate, placing the antenna conductor parallel to a ground edge, reducing the gap between conductors, or introducing a lumped capacitor.
+Case #5 used a large series inductance and small end capacitance:
 
-These changes increase electric-field concentration and can modify both the element resonance and its coupling to the ground mode.
+- L = 48.4 nH
+- C = 0.10 pF
+- more monopole-like current distribution
 
-A large open-end plate can strengthen electric coupling. A narrow gap can create a strong localized electric field. A lumped capacitor can connect two current paths while maintaining a controlled voltage difference across the gap.
+Case #1 used a small series inductance and large end capacitance:
 
-Again, the goal is not simply to maximize capacitance.
-
-Excessive capacitance may confine the field locally, reduce radiation resistance, increase sensitivity to mechanical tolerance, or create a very narrow resonance. The useful value of capacitance depends on how it changes the current path and how the resulting field overlaps with the target ground mode.
-
-Reactive loading should therefore be viewed not only as a way to shift resonance or improve impedance matching, but also as a way to reshape the antenna current distribution.
-
-That change in current distribution can directly change how the antenna couples to the ground mode.
+- L = 0.10 nH
+- C = 1.07 pF
+- more loop-like current distribution
 
 <figure class="technical-figure">
   <picture tabindex="0">
-    <source srcset="/figures/fig4_2.svg" type="image/svg+xml" />
-    <img src="/figures/fig4_2.png" alt="Three conceptual panels showing a longer and narrower current path, facing capacitive plates separated by a gap, and a loop path with inductive and capacitive loading as qualitative controls of antenna current and field distribution." width="1800" height="1080" loading="lazy" />
+    <img src="/figures/fig4_2.png" alt="Original simulated surface-current magnitude at 800 megahertz for two loading cases of the same antenna outline. Case 5 has current decreasing toward the end and is more monopole-like; Case 1 has stronger current around the complete path and is more loop-like." width="2400" height="1080" loading="lazy" />
   </picture>
-  <figcaption class="figure-caption">Fig. 4-2. Examples of geometrical and reactive-loading controls used to reshape antenna current and field distributions. Changes in current-path length, capacitive coupling, and lumped loading provide qualitative design knobs, but each geometrical change generally affects several electromagnetic quantities simultaneously.</figcaption>
+  <figcaption class="figure-caption">Fig. 4-2. Computed surface-current distributions at 800 MHz. The panels use the original thesis simulation output. Source: M.-G. Kim, Ph.D. dissertation, Hanyang University, 2020, Fig. 2.13.</figcaption>
 </figure>
 
----
-
-## 4. Designing an M-Dominant Structure
-
-For a loop or slot-type structure, magnetic coupling depends on more than the presence of a closed-looking geometry.
-
-The structure should create a useful circulating current or aperture field at the target frequency. The loop area, current path, gap, loading elements, and feed position all influence the strength and orientation of the magnetic response.
-
-A very small loop with weak current may provide little useful magnetic coupling. A physically larger loop may still be ineffective if its current distribution is not aligned with the magnetic field of the target ground mode.
-
-Similarly, a slot is useful when it interrupts or redirects a relevant ground current path and creates an aperture field that couples to the desired mode. A slot placed in an electromagnetically inactive region may have little effect, even if its physical length appears appropriate.
-
-The magnetic coupling mechanism must be designed in relation to the modal field distribution.
+The antenna outline is nearly unchanged, but the surface current is not. This is the main result of the example: reactive loading changes the current path, and the new current path changes the coupling to the ground-plane characteristic mode.
 
 ---
 
-## 5. Hybrid J/M Excitation
+## 5. Bandwidth Result and Its Limitation
 
-In an ideal example, the available antenna space may be located exactly at the electric-field maximum or the current maximum of the target ground mode.
+The simulation, with no loss other than radiation, gave the following **−6 dB impedance bandwidths**:
 
-Real products are rarely so convenient.
+- Case #1: 9.1 MHz
+- Case #2: 9.2 MHz
+- Case #3: 10.0 MHz
+- Case #4: 11.9 MHz
+- Case #5: 16.6 MHz
 
-The antenna may be forced into a location somewhere between the modal voltage maximum and current maximum. At that location, both electric and magnetic field components may be present. A purely J-dominant or purely M-dominant excitation may not use the available modal field efficiently.
-
-This is where hybrid excitation becomes useful.
-
-A loop structure can be modified to increase electric coupling by changing its gap, adding an open plate, or adjusting the loading capacitance. An IFA or PIFA-like structure can increase magnetic coupling by changing the feed-to-short spacing, introducing a looped current path, or coupling through a slot in the ground.
-
-The result does not need to belong cleanly to one traditional antenna category. It only needs to create the appropriate combination of electric and magnetic coupling for the given location.
-
-This is one reason loop-based or coupled structures can be attractive in constrained mobile products. Their current path and electric-field distribution can often be adjusted through geometry and lumped loading without completely changing the antenna topology.
-
-However, there is no universal rule that a loop is always easier or better. The final choice depends on available space, target bandwidth, efficiency requirement, manufacturing tolerance, component loss, user interaction, and coexistence with other antennas.
-
-The central design principle is:
-
-> Antenna geometry and lumped elements should be used to control the current and field distribution, not merely to create a desired input impedance.
-
-Matching is important, but matching should follow the physical excitation mechanism. If the antenna does not couple effectively to a useful radiating mode, a matching network cannot fully recover the lost radiation performance.
-
----
-
-## 6. A Practical Example: Same Geometry, Different Current Distribution
-
-A useful example comes from a compact antenna loaded with a series inductor near the feed and a capacitor near the opposite end.
-
-By changing the reactive loading while keeping the operating frequency near 800 MHz, the same basic antenna geometry can support very different current distributions.
-
-With a weak capacitive connection at the end, little current reaches the end of the structure and the current distribution becomes more monopole-like. As the capacitive connection becomes stronger, more current flows through the end region and the distribution becomes more loop-like.
-
-The important point is that the basic topology has not changed dramatically. The current distribution has — and therefore the coupling to the ground mode has changed as well.
-
-In this particular configuration, the antenna was located in a strong electric-field region of the dominant ground mode. The more monopole-like current distribution therefore coupled more effectively and provided a substantially wider measured impedance bandwidth.
-
-<!-- TODO: Fig. 4-3 requires author-supplied simulated current-distribution evidence.
-Asset: /figures/fig4_3.png
-Required source: original HFSS field exports, raw simulation project, or a clean thesis-source image at approximately 800 MHz comparing Case #1 (L = 0.1 nH, C = 1.07 pF; more loop-like) with Case #5 (L = 48.4 nH, C = 0.1 pF; more monopole-like). Preserve the current-scale provenance and do not invent amplitudes or synthesize a heatmap.
-Alt: Actual simulated current distributions at approximately 800 megahertz for the same loaded-antenna topology, comparing the more loop-like Case 1 with the more monopole-like Case 5.
-Caption: Fig. 4-3. Simulated current distributions of the same basic loaded-antenna topology at 800 MHz. A large end capacitance and small series inductance produce a more loop-like current distribution, whereas a small end capacitance and larger series inductance produce a more monopole-like distribution.
--->
-
-The bandwidth comparison below replots author-supplied numerical simulation and measurement values transcribed from the thesis. The exact values used by the generator are retained with a provenance note in `scripts/figures/data/fig4_4_bandwidth.csv`.
+The measured −6 dB bandwidths were 10, 15, 25, 30, and 41 MHz, respectively.
 
 <figure class="technical-figure">
   <picture tabindex="0">
-    <source srcset="/figures/fig4_4.svg" type="image/svg+xml" />
-    <img src="/figures/fig4_4.png" alt="Line plot of five reactively loaded antenna cases tuned near 800 megahertz. Simulated bandwidth rises from 9.1 to 16.6 megahertz and measured bandwidth rises from 10 to 41 megahertz from the more loop-like toward the more monopole-like case, with the result labeled as configuration-specific." width="1800" height="1080" loading="lazy" />
+    <source srcset="/figures/fig4_3.svg" type="image/svg+xml" />
+    <img src="/figures/fig4_3.png" alt="Plot of minus 6 dB impedance bandwidth for five tuned loading cases near 800 megahertz. The lossless simulated bandwidth rises from 9.1 to 16.6 megahertz, and measured bandwidth rises from 10 to 41 megahertz as the distribution changes from more loop-like to more monopole-like." width="2290" height="1435" loading="lazy" />
   </picture>
-  <figcaption class="figure-caption">Fig. 4-4. Simulated and measured impedance bandwidth for five reactively loaded antenna cases tuned near 800 MHz. Moving from the loop-like case toward the monopole-like case increased the bandwidth in this specific antenna placement, where the dominant ground mode exhibits strong electric-field behavior. The trend should not be interpreted as a universal preference for monopole-like excitation. Replotted from author-supplied numerical values transcribed from the thesis; the thesis PDF and exact page or table locator are not present in this repository.</figcaption>
+  <figcaption class="figure-caption">Fig. 4-3. −6 dB impedance bandwidth for five loading cases tuned near 800 MHz. Data are replotted from Tables 2.5 and 2.6 of the author’s dissertation. The measured bandwidth includes conductor, dielectric, and component loss and must not be interpreted as radiation efficiency.</figcaption>
 </figure>
 
-This does not mean that monopole-like current is universally better. If the available antenna location overlaps a strong magnetic-field region, a loop-like current distribution may instead provide the better coupling.
+The absolute measured bandwidth is much larger than the simulated bandwidth because the measurement includes additional losses. Loss can broaden the input match while reducing radiation efficiency. Therefore, the measured bandwidth alone is not proof of improved radiation performance.
 
-> The topology is only the starting point.  
-> Loading changes the current distribution, and the current distribution determines how the antenna interacts with the ground mode.
+The cleaner comparison is the simulation trend without conductor, dielectric, or component loss. In this geometry, the antenna is near an electric-field maximum of the dominant ground-plane mode. The more monopole-like current distribution gives stronger electric coupling, higher radiation resistance in the lossless model, and a wider simulated impedance bandwidth.
+
+This conclusion is specific to the antenna location and target mode. Near a magnetic-field or current maximum, a loop-like distribution may provide stronger coupling.
 
 ---
 
-## 7. Key Message
+## 6. Design Interpretation
 
-> Practical mobile antennas are mixtures of J-type and M-type excitation. The antenna engineer’s job is to control that mixture so that the available antenna volume couples efficiently to the desired ground or chassis mode.
+The example gives a practical workflow:
+
+1. Determine the target chassis mode and its local fields.
+2. Choose an antenna outline that fits the clearance.
+3. Use geometry and reactive loading to control the element current distribution.
+4. Retune the resonance and input match.
+5. Compare radiation resistance in the material- and component-loss-free model, not only S11 bandwidth.
+6. Add realistic losses and compare radiation efficiency, total efficiency, component Q, tolerance, and user loading.
+
+A matching network cannot fully compensate for a poor radiating current path. It can only transform the impedance presented at the feed.
+
+---
+
+## Key Message
+
+> The antenna topology is only the starting point. Geometry and reactive loading set the surface-current distribution, and that distribution determines the coupling to the chassis mode.
 
 ---
 
 ## Next Chapter Preview
 
-In the next chapter, we will move one step further. So far, we have assumed that a useful ground mode already exists near the target frequency. But what if the product ground is too small, or the natural mode appears at the wrong frequency?
-
-In that case, exciting the mode is not enough.
-
-We must modify the mode itself.
+Chapter 5 moves from feed control to mode control: how the product structure can be modified when the useful chassis mode is at the wrong frequency.

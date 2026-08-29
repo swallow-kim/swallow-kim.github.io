@@ -17,16 +17,10 @@ const routes = [
   "/posts/04-j-and-m-controlling-the-coupling-mechanism/",
 ];
 const chapterFigures = [
-  "fig1_2",
-  "fig2_1",
-  "fig2_2",
-  "fig3_1",
-  "fig3_2",
-  "fig3_3",
-  "fig4_1",
-  "fig4_2",
-  "fig4_4",
-].flatMap((stem) => [`${stem}.png`, `${stem}.svg`]);
+  ...["fig1_2", "fig1_3", "fig2_1", "fig3_1", "fig4_1", "fig4_3"].flatMap((stem) => [`${stem}.png`, `${stem}.svg`]),
+  "fig2_2.png",
+  "fig4_2.png",
+];
 
 const routeFile = (root, route) =>
   route === "/" ? path.join(root, "index.html")
@@ -130,9 +124,9 @@ test("allows only the staged baseline figure while requiring its file", async ()
 test("rejects a missing required chapter figure asset", async () => {
   const root = await makeSite();
   try {
-    await rm(path.join(root, "figures", "fig4_4.png"), { force: true });
+    await rm(path.join(root, "figures", "fig4_3.png"), { force: true });
     const result = await validateSite({ site: root, stage: "fixture" });
-    assert(result.errors.some((error) => error.includes("missing chapter figure: /figures/fig4_4.png")));
+    assert(result.errors.some((error) => error.includes("missing chapter figure: /figures/fig4_3.png")));
   } finally {
     await rm(root, { force: true, recursive: true });
   }
