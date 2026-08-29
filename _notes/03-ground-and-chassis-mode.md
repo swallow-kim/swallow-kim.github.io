@@ -47,7 +47,7 @@ These regions favor different feed geometries. “Favor” is important here: fi
 
 ## 3. Modal Excitation and Feed Coupling
 
-In TCM, the feed-dependent term is the **modal excitation coefficient**. For an impressed electric field, it is related to the overlap between the excitation and the characteristic current. Equivalent-source formulations may also include electric-current and magnetic-current source terms through the reaction theorem.
+In TCM, the feed-dependent term is the **modal excitation coefficient (MEC)**. For an impressed electric field, it is related to the overlap between the excitation and the characteristic current. Equivalent-source formulations may also include electric-current and magnetic-current source terms through the reaction theorem.
 
 The practical interpretation is:
 
@@ -120,7 +120,7 @@ A practical sequence is:
 
 Surface-current plots are useful, but they should be read with other quantities:
 
-- modal weighting coefficient or modal expansion coefficient, when available;
+- modal weighting coefficient (MWC) or modal expansion coefficient, when available;
 - accepted power and dissipated power;
 - radiation efficiency and total efficiency;
 - current on the frame, shield cans, and lossy components;

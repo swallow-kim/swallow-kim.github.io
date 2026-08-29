@@ -46,7 +46,7 @@ The practical point is that a reactive component does more than move the input r
 
 ## 3. Loaded-Antenna Example
 
-The example below is taken from the author’s dissertation. The ground plane is **50 mm × 115 mm**, and the antenna occupies a **5 mm × 25 mm** clearance at the top edge. A series inductor is placed near the feed, and a series capacitor is placed near the opposite end. The feed spacing \(D_f\) is adjusted for matching.
+The example below is taken from the author’s dissertation. The ground plane is **50 mm × 115 mm**, and the antenna occupies a **5 mm × 25 mm** clearance at the top edge. A series inductor is placed near the feed, and a series capacitor is placed near the opposite end. The feed spacing D<sub>f</sub> is adjusted for matching.
 
 <figure class="technical-figure">
   <picture tabindex="0">
@@ -66,14 +66,14 @@ This terminology describes the current distribution. It does not mean that one c
 
 Case #5 used a large series inductance and small end capacitance:
 
-- \(L = 48.4\ \text{nH}\)
-- \(C = 0.10\ \text{pF}\)
+- L = 48.4 nH
+- C = 0.10 pF
 - more monopole-like current distribution
 
 Case #1 used a small series inductance and large end capacitance:
 
-- \(L = 0.10\ \text{nH}\)
-- \(C = 1.07\ \text{pF}\)
+- L = 0.10 nH
+- C = 1.07 pF
 - more loop-like current distribution
 
 <figure class="technical-figure">

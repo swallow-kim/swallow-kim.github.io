@@ -28,7 +28,7 @@ export const runDoctor = () => {
     bundler: commandVersion(bundler.command, bundler.args),
   };
 
-  if (!report.ruby.startsWith("ruby 3.3.")) {
+  if (!report.ruby.startsWith("ruby 3.3.4")) {
     throw new Error(`Expected Ruby 3.3.4, received: ${report.ruby}`);
   }
   if (Number.parseInt(process.versions.node, 10) < 20) {

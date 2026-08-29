@@ -65,7 +65,7 @@ test("rejects malformed showcase front matter", async () => {
   await withProject(async (root) => {
     const file = path.join(root, "qa", "primitive-showcase.md");
     const source = await readFile(file, "utf8");
-    await writeFile(file, source.replace("\n---\n\n", "\n\n"));
+    await writeFile(file, source.replace(/\r?\n---\r?\n\r?\n/, "\n\n"));
   }, ({ errors }) => assert(errors.some((error) => error.includes("malformed front matter"))));
 });
 

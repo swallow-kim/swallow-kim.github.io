@@ -1,19 +1,33 @@
+# /// script
+# requires-python = ">=3.11,<3.14"
+# dependencies = [
+#   "matplotlib==3.10.1",
+#   "numpy==2.2.5",
+#   "pillow==11.2.1",
+# ]
+# ///
+"""# noqa: SIZE_OK - cohesive generator for the reviewed Chapter 1-4 figure set."""
+
 from __future__ import annotations
 
-from pathlib import Path
 import csv
 import math
-import numpy as np
-from PIL import Image, ImageDraw, ImageFont
+from pathlib import Path
+
+import matplotlib
 import matplotlib.pyplot as plt
-from matplotlib.patches import Rectangle, FancyArrowPatch, Circle, Arc
-from matplotlib.lines import Line2D
+import numpy as np
+from matplotlib.patches import Circle, FancyArrowPatch, Rectangle
+from PIL import Image, ImageDraw, ImageFont
 
 ROOT = Path(__file__).resolve().parents[2]
 OUT = ROOT / "figures"
 SCRIPT_DIR = Path(__file__).resolve().parent
 SRC = SCRIPT_DIR / "source" / "thesis_figures"
 DATA = SCRIPT_DIR / "data"
+FONT_DIR = Path(matplotlib.get_data_path()) / "fonts" / "ttf"
+FONT_REGULAR = FONT_DIR / "DejaVuSans.ttf"
+FONT_BOLD = FONT_DIR / "DejaVuSans-Bold.ttf"
 OUT.mkdir(parents=True, exist_ok=True)
 
 # Site-aligned, restrained palette.
@@ -26,7 +40,7 @@ LIGHT_BLUE = "#DCEAF6"
 LIGHT_GREY = "#F0EEE8"
 
 plt.rcParams.update({
-    "font.family": "Liberation Sans",
+    "font.family": "DejaVu Sans",
     "font.size": 9.5,
     "axes.labelsize": 10,
     "xtick.labelsize": 9,
@@ -41,12 +55,19 @@ plt.rcParams.update({
     "axes.facecolor": PAPER,
     "savefig.facecolor": PAPER,
     "svg.fonttype": "none",
+    "svg.hashsalt": "mobile-antenna-ch1-4",
 })
 
 
 def save(fig: plt.Figure, stem: str, dpi: int = 300) -> None:
     fig.savefig(OUT / f"{stem}.png", dpi=dpi, bbox_inches="tight", pad_inches=0.06)
-    fig.savefig(OUT / f"{stem}.svg", bbox_inches="tight", pad_inches=0.06)
+    svg_path = OUT / f"{stem}.svg"
+    fig.savefig(svg_path, bbox_inches="tight", pad_inches=0.06, metadata={"Date": None})
+    svg_text = svg_path.read_text(encoding="utf-8")
+    svg_path.write_text(
+        "\n".join(line.rstrip() for line in svg_text.splitlines()) + "\n",
+        encoding="utf-8",
+    )
     plt.close(fig)
 
 
@@ -67,7 +88,7 @@ def draw_dimension(ax, xy1, xy2, label, offset=(0, 0), text_offset=(0, 0)):
     ox, oy = offset
     ax.annotate(
         "", xy=(x2 + ox, y2 + oy), xytext=(x1 + ox, y1 + oy),
-        arrowprops=dict(arrowstyle="<->", color=MUTED, linewidth=0.8, shrinkA=0, shrinkB=0),
+        arrowprops={"arrowstyle": "<->", "color": MUTED, "linewidth": 0.8, "shrinkA": 0, "shrinkB": 0},
     )
     ax.text((x1 + x2) / 2 + ox + text_offset[0], (y1 + y2) / 2 + oy + text_offset[1],
             label, ha="center", va="center", color=MUTED, fontsize=8.5)
@@ -186,7 +207,7 @@ def fig3_1_coupling_elements():
     ax.plot([0.72, 0.72], [4.82, 5.15], color=INK, linewidth=1.2)
     ax.plot([0.54, 0.90], [4.82, 4.82], color=INK, linewidth=0.9)
     ax.annotate("gap", xy=(0.35, 5.05), xytext=(1.95, 5.55), fontsize=8.3, color=MUTED,
-                arrowprops=dict(arrowstyle="-", color=MUTED, linewidth=0.7))
+                arrowprops={"arrowstyle": "-", "color": MUTED, "linewidth": 0.7})
     ax.text(1.02, 5.77, "CCE", ha="center", va="bottom", fontsize=8.8, fontweight="bold")
     ax.text(0.55, 0.15, "current minimum / charge maximum", ha="left", va="bottom", fontsize=8.2, color=MUTED)
 
@@ -221,7 +242,7 @@ def fig4_1_loaded_geometry():
     ax.text(W/2, H/2, "ground plane", ha="center", va="center", fontsize=9.3, color=MUTED)
     ax.annotate("antenna clearance", xy=(12.5, H-2.5), xytext=(34, H+8),
                 ha="center", va="bottom", fontsize=8.5, color=MUTED,
-                arrowprops=dict(arrowstyle="-", color=MUTED, linewidth=0.8))
+                arrowprops={"arrowstyle": "-", "color": MUTED, "linewidth": 0.8})
     draw_dimension(ax, (0, 0), (W, 0), "50 mm", offset=(0, -5), text_offset=(0, -1.8))
     draw_dimension(ax, (W, 0), (W, H), "115 mm", offset=(5.5, 0), text_offset=(2.0, 0))
     ax.set_xlim(-8, 64)
@@ -287,26 +308,13 @@ def fig4_3_bandwidth():
     ax.text(0.99, 0.75,
             "Measured bandwidth also includes\ncomponent, conductor, and dielectric loss.",
             transform=ax.transAxes, ha="right", va="top", fontsize=8.4, color=MUTED,
-            bbox=dict(facecolor=PAPER, edgecolor=RULE, linewidth=0.7, boxstyle="square,pad=0.35"))
+            bbox={"facecolor": PAPER, "edgecolor": RULE, "linewidth": 0.7, "boxstyle": "square,pad=0.35"})
     save(fig, "fig4_3")
 
 
-def font(size: int, bold: bool = False):
-    paths = [
-        "/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf" if bold else "/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf",
-        "C:/Windows/Fonts/arialbd.ttf" if bold else "C:/Windows/Fonts/arial.ttf",
-        "arialbd.ttf" if bold else "arial.ttf",
-    ]
-    for p in paths:
-        if Path(p).exists():
-            try:
-                return ImageFont.truetype(p, size=size)
-            except Exception:
-                pass
-    try:
-        return ImageFont.truetype("arial.ttf", size=size)
-    except Exception:
-        return ImageFont.load_default()
+def font(size: int, bold: bool = False) -> ImageFont.FreeTypeFont:
+    path = FONT_BOLD if bold else FONT_REGULAR
+    return ImageFont.truetype(str(path), size=size)
 
 
 def fit_image(im: Image.Image, size: tuple[int, int], background=(255, 254, 251)) -> Image.Image:

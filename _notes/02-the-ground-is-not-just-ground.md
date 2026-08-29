@@ -79,20 +79,18 @@ The **theory of characteristic modes (TCM)** represents the surface current on a
 
 For a perfectly conducting body, each characteristic mode has:
 
-- a characteristic current distribution, \(J_n\);
-- an eigenvalue, \(\lambda_n\), or the corresponding characteristic angle;
+- a characteristic current distribution, Jₙ;
+- an eigenvalue, λₙ, or the corresponding characteristic angle;
 - a modal far field;
 - a source-independent resonance behavior.
 
 The **modal significance**
 
-\[
-\mathrm{MS}_n = \left|\frac{1}{1+j\lambda_n}\right|
-\]
+`MSₙ = |1 / (1 + jλₙ)|`
 
 is a source-independent indicator of how close a mode is to resonance. It does not tell us whether a particular feed excites that mode strongly.
 
-Feed coupling is described by a **modal excitation coefficient**. The driven modal weight also includes the eigenvalue term. Depending on the formulation and software, this result is reported as a modal weighting coefficient or modal expansion coefficient.
+Feed coupling is described by a **modal excitation coefficient (MEC)**. The driven modal weight also includes the eigenvalue term. Depending on the formulation and software, this result is reported as a **modal weighting coefficient (MWC)** or modal expansion coefficient.
 
 Therefore:
 

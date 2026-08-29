@@ -28,3 +28,13 @@ All values are -6 dB impedance bandwidths for cases tuned near 800 MHz.
 ## Reproduced line drawing
 
 `fig4_1` reproduces the geometry and dimensions in dissertation Fig. 2.12, printed p. 33 / PDF p. 48. It is a new vector drawing, not an extracted screenshot.
+
+## Reproduction environment
+
+The generator declares its exact NumPy, Matplotlib, and Pillow versions with PEP 723 metadata. Run:
+
+```bash
+uv run scripts/figures/generate_mobile_antenna_ch1_4.py
+```
+
+The script uses Matplotlib's bundled DejaVu Sans files, a fixed SVG hash salt, and timestamp-free SVG metadata so repeated runs produce identical assets.
